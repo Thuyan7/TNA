@@ -1,0 +1,119 @@
+img {
+    width: 100%;
+}
+
+.inner-img {
+    width: 90%;
+    margin-left: auto;
+}
+
+.inner-img .image {
+    height: 100vh;
+    padding: 70px 0;
+    object-fit: cover;
+}
+
+.btn-register {
+    margin-top: 25px;
+}
+
+.btn-register {
+    color: var(--color2);
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+}
+
+.inner-form .form {
+    padding: 70px 0;
+}
+
+.inner-form .form label {
+    margin-bottom: 10px;
+    color: var(--color2);
+    font-weight: 900;
+}
+
+
+.inner-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.inner-line div {
+    width: 100%;
+    height: 1px;
+    background-color: grey;
+}
+
+.inner-line span {
+    color: var(--color2);
+    font-weight: 900;
+}
+
+.login-options img {
+    width: 20px;
+    height: 20px;
+}
+
+.login-options span {
+    flex-grow: 1;
+    font-weight: 900;
+    color: var(--color2);
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.login span {
+    color: grey;
+}
+
+.login a {
+    color: var(--color2);
+    font-weight: 600;
+}
+
+.register button,
+.register input {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.6rem;
+}
+
+.btn-register {
+    width: 100%;
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .inner-img {
+        display: none;
+    }
+
+    .register {
+        position: relative;
+        background: url('../image/login.jpg') no-repeat;
+        background-size: cover;
+    }
+
+    .register::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #2624243c;
+    }
+
+}

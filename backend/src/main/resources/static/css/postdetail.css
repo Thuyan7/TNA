@@ -1,0 +1,337 @@
+.header {
+    position: sticky;
+}
+
+.pt {
+    margin: 50px 0 0;
+    background-color: white;
+}
+
+.pt p {
+    margin: 0;
+}
+
+.pt .btn-left,
+.pt .btn-right {
+    color: var(--color2);
+    position: absolute;
+    padding: 5px 10px;
+    border: 1px solid grey;
+    cursor: pointer;
+    background: white;
+    transition: transform 0.3s ease;
+    border-radius: 50%;
+}
+
+.pt .btn-left {
+    top: -20px;
+    left: 42%;
+}
+
+.pt .btn-right {
+    bottom: -5px;
+    left: 42%;
+}
+
+.pt .inner-slide {
+    position: relative;
+}
+
+.pt .inner-left {
+    margin-bottom: 30px;
+}
+
+.pt .inner-left .inner-slide .slide {
+    margin-top: -3px;
+    max-height: 520px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.pt .inner-left .inner-slide img {
+    margin-bottom: 27px;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 9px;
+}
+
+.pt .inner-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pt .inner-center .inner-title {
+    color: var(--color2);
+    margin-bottom: 10px;
+}
+
+.pt .inner-center .inner-head img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: right center;
+    border-radius: 9px;
+}
+
+.pt .inner-center .inner-head figcaption {
+    color: var(--color2);
+    margin-top: 20px;
+    font-size: 2.0rem;
+}
+
+.pt .inner-center .inner-head figure figcaption>p {
+    margin-bottom: 10px;
+}
+
+.pt .inner-center .inner-head .inner-location {
+    display: inline-block;
+}
+
+.pt .inner-center .inner-head a {
+    display: flex;
+    align-items: center;
+    color: var(--color2);
+
+}
+
+.pt .inner-center .inner-head p {
+    display: flex;
+    align-items: center;
+}
+
+.pt .inner-center .inner-head a p {
+    margin-left: 10px;
+}
+
+.pt .inner-center .inner-head .inner-title {
+    font-weight: 500;
+    font-size: 3.0rem;
+}
+
+.pt .inner-center .inner-content {
+    color: black;
+    padding: 20px 0;
+    border-top: 1px solid grey;
+}
+
+.pt .inner-center .inner-content .inner-overview .inner-head {
+    display: flex;
+}
+
+.pt .inner-center .inner-content .inner-overview .inner-head .inner-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.pt .inner-center .inner-content .inner-utilities {
+    margin-top: 20px;
+}
+
+.pt .inner-center .inner-content .inner-utilities .utilities .inner-box {
+    margin-bottom: 20px;
+}
+
+.pt .inner-center .inner-content .inner-utilities .utilities .inner-box .inner-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.pt .inner-center .inner-content .inner-utilities .utilities .inner-box ul {
+    padding: 0;
+}
+
+.pt .inner-center .inner-content .inner-utilities .utilities .inner-box ul li {
+    margin-bottom: 5px;
+}
+
+.pt .inner-center .inner-center-location {
+    padding-bottom: 20px;
+}
+
+.pt .inner-center .inner-center-location .inner-location a {
+    display: flex;
+    align-items: center;
+    color: var(--color2);
+    font-size: 2.0rem;
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+.pt .inner-center .inner-center-location .inner-location a i {
+    margin-right: 10px;
+}
+
+.pt .inner-center .inner-center-location iframe {
+    width: 100%;
+    height: 700px;
+    border: none;
+}
+
+.pt .inner-right .inner-other:first-child {
+    margin-top: 0;
+}
+
+.pt .inner-img img {
+    width: 255px;
+    height: 191px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.pt .inner-right .inner-other {
+    display: block;
+    color: black;
+    font-size: 1.8rem;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pt .inner-right h5 {
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+.pt .inner-right .inner-other .location {
+    display: flex;
+    align-items: center;
+}
+
+.pt .inner-right .inner-other .location p {
+    margin-left: 10px;
+}
+
+/* Phần bình luận */
+.comments-section {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+
+.comments-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.comment-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+    transition: box-shadow 0.3s; /* Hiệu ứng đổ bóng */
+}
+
+.comment-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Hiệu ứng hover */
+}
+
+.comment-rating {
+    margin-bottom: 5px;
+}
+
+.comment-rating .fa-star {
+    color: #ffcc00; /* Màu vàng cho ngôi sao đánh giá */
+    margin-right: 2px;
+}
+
+.comment-content {
+    font-size: 14px;
+    color: #333;
+}
+
+.comment-author {
+    font-size: 12px;
+    color: #777;
+}
+
+/* Phần form bình luận */
+.comment-form {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+}
+
+
+.form-group textarea {
+    width: 100%; /* Chiều rộng 100% */
+    padding: 10px; /* Padding bên trong */
+    border: 1px solid #ccc; /* Viền xung quanh */
+    border-radius: 5px; /* Bo góc viền */
+    font-size: 14px; /* Kích thước chữ trong textarea */
+    color: #555; /* Màu chữ trong textarea */
+    resize: vertical; /* Cho phép thay đổi kích thước theo chiều dọc */
+    transition: border-color 0.3s; /* Hiệu ứng chuyển tiếp cho viền */
+}
+
+.form-group textarea:focus {
+    border-color: #007bff; /* Màu viền khi textarea được chọn */
+    outline: none; /* Bỏ đường viền mặc định */
+}
+
+.form-group textarea::placeholder {
+    color: #aaa; /* Màu chữ cho placeholder */
+    opacity: 1; /* Đảm bảo placeholder luôn hiển thị */
+}
+
+
+/* Phần đánh giá sao */
+.rating {
+    direction: rtl; /* Đảo ngược chiều */
+}
+
+.rating input {
+    display: none; /* Ẩn input radio */
+}
+
+.rating label {
+    font-size: 30px; /* Kích thước ngôi sao */
+    color: #ddd; /* Màu xám cho ngôi sao chưa được chọn */
+    cursor: pointer;
+}
+
+.rating input:checked ~ label {
+    color: #ffcc00; /* Màu vàng cho ngôi sao đã chọn */
+}
+
+.rating label:hover,
+.rating label:hover ~ label {
+    color: #ffcc00; /* Màu vàng khi hover */
+}
+
+
+/* Responsive cho các thiết bị nhỏ */
+@media (max-width: 567px) {
+    .pt .btn-right {
+        bottom: -20px;
+    }
+
+    .pt .btn-left {
+        top: 40%;
+        left: 5px;
+        transform: translate(-50%);
+    }
+
+    .pt .inner-left .inner-slide .slide {
+        height: 150px;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 23px;
+    }
+
+    .pt .inner-left .inner-slide .slide img {
+        width: 120px;
+        margin: 0;
+    }
+}

@@ -1,0 +1,75 @@
+.post-container {
+    padding: 80px 0 0;
+    display: flex;
+    flex-direction: column; /* Thêm dòng này để xếp các phần tử theo cột */
+    align-items: flex-start; /* Căn các phần tử sang bên trái */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Tạo khoảng cách giữa các phần tử */
+}
+
+.inner-box {
+    display: flex; /* Sử dụng flexbox cho inner-box */
+    justify-content: space-between; /* Căn chỉnh giữa các phần tử */
+    align-items: flex-start; /* Căn chỉnh các phần tử theo đầu hàng */
+    gap: 20px; /* Khoảng cách giữa các phần tử */
+    color: black;
+    box-shadow: 0 0 5px 1px rgb(219, 218, 218);
+    padding: 20px;
+    margin: 15px; /* Khoảng cách cho mỗi bài đăng */
+    flex: 1 1 calc(50% - 15px); /* Mỗi bài đăng chiếm 50% chiều rộng, trừ khoảng cách */
+    box-sizing: border-box; /* Bao gồm padding và border trong kích thước */
+}
+
+.inner-img {
+    width: 270px; /* Kích thước cố định cho hình ảnh */
+    height: 200px; /* Chiều cao hình ảnh */
+}
+
+.inner-img img {
+    width: 100%; /* Đảm bảo hình ảnh chiếm đầy toàn bộ không gian */
+    height: 100%; /* Chiều cao khớp với chiều cao khung */
+    object-fit: cover; /* Giữ tỷ lệ hình ảnh và cắt bỏ phần dư thừa */
+}
+
+.inner-content {
+    flex: 1; /* Cho phép phần nội dung chiếm không gian còn lại */
+}
+
+.title {
+    font-size: 2.5rem; /* Kích thước tiêu đề */
+    margin: 0 0 10px; /* Khoảng cách dưới tiêu đề */
+}
+
+.inner-location {
+    display: flex; /* Sử dụng flexbox để căn chỉnh địa chỉ */
+    align-items: center; /* Căn giữa các phần tử */
+    color: white; /* Màu chữ của nút */
+    color: black;
+    padding: 10px 15px; /* Padding cho nút */
+    border-radius: 5px; /* Bo góc cho nút */
+    text-decoration: none; /* Bỏ gạch chân */
+    margin: 16px 0; /* Khoảng cách trên và dưới cho nút địa chỉ */
+}
+
+.inner-bot {
+    display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
+    align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
+}
+
+.inner-price {
+    margin: 0; /* Không có khoảng cách */
+    font-size: 1.5rem; /* Kích thước giá */
+    font-weight: 600; /* Đậm cho giá */
+}
+
+.btn {
+    padding: 5px 10px; /* Padding cho nút */
+    font-size: 1.5rem; /* Kích thước văn bản nút */
+    margin-left: auto; /* Đẩy nút sang bên phải */
+}
+
+@media (max-width: 768px) {
+    .inner-box {
+        flex: 1 1 100%; /* Mỗi bài đăng chiếm toàn bộ chiều rộng trên thiết bị nhỏ hơn */
+    }
+}

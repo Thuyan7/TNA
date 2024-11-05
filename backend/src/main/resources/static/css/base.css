@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+*{
+    box-sizing: border-box;
+}
+:root {
+    --color1: #99D9F2;
+    --color3: #079DD9;
+    --color2: #053574;
+    --color-test: #CCE6F7;
+    --font-1: "Roboto", sans-serif;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: var(--line-clamp, 1);
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+html {
+    user-select: none;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: var(--font-1);
+    color: white;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: grayscale;
+}
+
+.m-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color1);
+    border-radius: 0 9px 9px 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color3);
+}
+

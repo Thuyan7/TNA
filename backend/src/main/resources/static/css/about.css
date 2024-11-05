@@ -1,0 +1,247 @@
+.header {
+    position: sticky;
+}
+
+.title-head {
+    color: var(--color2);
+    font-weight: 500;
+    font-size: 3.0rem;
+    color: var(--color2);
+}
+
+.title {
+    color: var(--color2);
+}
+
+/* About Intro */
+.about-intro {
+    color: black;
+    margin-top: 40px;
+}
+
+.about-intro .inner-box {
+    padding: 20px 0;
+}
+
+.about-intro .title {
+    margin-bottom: 20px;
+}
+
+.about-intro .desc {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+/* End About Intro */
+/* Service Highlights */
+.service-highlights {
+    margin-top: 100px;
+}
+
+.service-highlights .inner-head {
+    margin-bottom: 50px;
+}
+
+.service-highlights .inner-box {
+    background: #f4f6f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px;
+    min-height: 470px;
+    border-radius: 9px;
+}
+
+.service-highlights .inner-box .item-img {
+    width: 120px;
+    height: 120px;
+    padding: 20px;
+    box-shadow: 0 0 0 5px var(--color2);
+    border-radius: 50%;
+    background: white;
+    margin: 15px 0 25px;
+}
+
+.service-highlights .inner-box:hover .item-img {
+    background: #f4f6f8;
+}
+
+.service-highlights .title {
+    color: var(--color2);
+    font-size: 2.0rem;
+}
+
+.service-highlights .desc {
+    color: black;
+    text-align: justify;
+    flex-grow: 1;
+}
+
+@media (max-width: 1199.98px) {
+    .service-highlights .inner-box {
+        min-height: 300px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .service-highlights .inner-box {
+        min-height: 430px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .service-highlights .inner-box {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 415.98px) {
+    .service-highlights .inner-box {
+        min-height: 50px;
+    }
+}
+
+/* End Service Highlights */
+/* Procedure */
+.procedure {
+    margin-top: 100px;
+}
+
+.procedure .inner-head {
+    margin-bottom: 50px;
+}
+
+.procedure .inner-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #f4f6f8;
+    padding: 20px;
+    border-radius: 9px;
+    min-height: 540px;
+}
+
+.procedure .inner-box .img-item {
+    padding: 20px;
+    width: 120px;
+    height: 120px;
+    background: var(--color1);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.procedure .inner-box ul {
+    padding: 0;
+    flex-grow: 1;
+}
+
+.procedure .inner-box li {
+    color: black;
+    margin-bottom: 15px;
+}
+
+.procedure .inner-box li::before {
+    content: "✔";
+    margin-right: 10px;
+    color: white;
+    background-color: var(--color2);
+    border-radius: 50%;
+    padding: 5px 7px;
+    font-size: 1.0rem;
+}
+
+.procedure .inner-box li:last-child {
+    margin-bottom: 0;
+}
+
+.procedure .inner-box .title {
+    margin: 25px 0 15px;
+    font-size: 2.0rem;
+}
+
+@media (max-width: 1999.98px) {
+    .procedure .inner-box {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .procedure .inner-box {
+        min-height: 300px;
+    }
+}
+
+/* End Procedure */
+/* My team */
+.member {
+    color: black;
+    margin: 100px 0 50px;
+}
+.member .row {
+    scroll-behavior: smooth;
+}
+.member .row.no-transition{
+    scroll-behavior: auto;
+}
+.member .inner-head {
+    margin-bottom: 50px;
+}
+
+.member .inner-head .desc {
+    font-size: 1.8rem;
+    opacity: 0.7;
+}
+
+.member .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+
+.member .card {
+    scroll-snap-align: start;
+}
+
+.member .inner-member {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 5px solid white;
+    transition: 0.5s ease;
+}
+
+.member .inner-member:hover {
+    border-bottom: 5px solid var(--color2);
+    transition: 0.5s ease;
+}
+
+.member .inner-member .avt {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.member .inner-member .name {
+    font-size: 2.0rem;
+    font-weight: 700;
+    margin: 20px 0 0;
+    color: var(--color2);
+}
+
+.member .inner-member .job {
+    font-size: 1.7rem;
+    color: #889595;
+}
+
+/* End My team */

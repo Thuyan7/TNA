@@ -1,0 +1,137 @@
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+:root {
+    --c-action-primary: #2e44ff;
+    --c-action-primary-accent: #e9e5ff;
+    --c-action-secondary: #e5e5e5;
+    --c-text-primary: #0d0f21;
+    --c-text-secondary: #6a6b76;
+    --c-background-primary: #d0d1de;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--c-text-primary);
+    background-color: var(--c-background-primary);
+    line-height: 1.5;
+}
+
+input, button, select, textarea {
+    font: inherit;
+}
+
+.modal {
+    width: 90%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    background-color: #FFF;
+    border-radius: .5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.5rem 1.5rem 1rem;
+}
+
+.logo-circle {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--c-action-primary-accent);
+}
+
+.btn-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: .25rem;
+    border: none;
+    background-color: transparent;
+}
+
+.btn-close:hover,
+.btn-close:focus {
+    background-color: var(--c-action-primary-accent);
+}
+
+.modal-body {
+    padding: 1rem 1.5rem;
+}
+
+.modal-title {
+    font-weight: 700;
+}
+
+.modal-description {
+    font-weight: 400;
+    color: var(--c-text-secondary);
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 2px dashed var(--c-action-primary);
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    background-color: var(--c-action-primary-accent);
+}
+
+.upload-area-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: .5rem;
+}
+
+.upload-area-title {
+    font-weight: 700;
+}
+
+.upload-area-description {
+    font-weight: 400;
+    color: var(--c-text-secondary);
+    text-align: center;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--c-action-secondary);
+}
+
+.btn-primary {
+    background-color: var(--c-action-primary);
+    color: #FFF;
+    border: none;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    margin-right: .5rem;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #1a1c6c;
+}

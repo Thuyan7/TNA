@@ -1,0 +1,899 @@
+/* CSS cho thanh tìm kiếm */
+.search-bar {
+    display: inline-block;
+    position: absolute;
+    right: 150px; /* Điều chỉnh vị trí ngang của thanh tìm kiếm */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+    width: 200px; /* Độ rộng của ô tìm kiếm */
+}
+
+.search-button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+/* Button */
+.btn {
+    padding: 5px 20px;
+    border: 2px solid var(--color2);
+    color: var(--color2);
+    font-weight: 600;
+    background-color: white;
+    transition: .5s ease;
+}
+
+.btn:hover {
+    transition: .5s ease;
+    background-color: var(--color3);
+    border-color: var(--color3);
+    color: white;
+}
+
+.btn-arrow,
+.btn-arrow-room {
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+    color: var(--color2);
+    z-index: 90;
+}
+
+.btn-arrow:active {
+    transform: translateY(-50%) scale(0.85);
+}
+
+.card {
+    border: none;
+    scroll-snap-align: end;
+    padding: 10px 15px;
+}
+/* Adjust styles for inner-head to accommodate the search bar */
+.inner-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Styles for the search bar */
+.inner-search {
+    display: flex;
+    align-items: center;
+    margin: 0 15px; /* Margin to separate search bar from other elements */
+    position: relative;
+    max-width: 1000px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    padding-right: 40px; /* space for the search icon */
+}
+
+.search-input:focus {
+    border-color: #0088cc;
+}
+
+.search-btn {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #888;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.search-btn:hover {
+    color: #0088cc;
+}
+
+
+
+/* End Button */
+/* Position */
+.position {
+    background: #f4f6f8;
+    padding: 15px 0;
+}
+
+.position .inner-position {
+    display: flex;
+    align-items: center;
+}
+
+.position .inner-position a {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.position .inner-position span {
+    margin: 0 5px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: black;
+}
+
+.position .inner-position .page-position {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color2);
+}
+
+.position .inner-position a:hover {
+    color: var(--color2);
+
+}
+
+/* End Position */
+/* Header */
+.container-fluid {
+    max-width: 1300px;
+}
+
+.header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    background: transparent;
+}
+
+.header.scrolled {
+    background: #fff;
+    border-bottom: 1px solid grey;
+}
+
+.header .inner-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.header .inner-head .inner-logo img {
+    width: 125px;
+    object-fit: cover;
+}
+
+.header .inner-head .inner-menu .menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .inner-head .inner-menu .menu li {
+    padding: 22px;
+    min-width: 120px;
+}
+
+.header .inner-head .inner-menu .menu li a {
+    position: relative;
+    transition: .5s ease;
+}
+
+.header .inner-head .inner-menu .menu li a:hover {
+    font-weight: 900;
+    transition: .5s ease;
+}
+
+.header .inner-head .inner-menu .menu li a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    background: var(--color2);
+    transform: scale(0, 1);
+    transition: transform .5s ease-in;
+}
+
+.header .inner-head .inner-menu .menu li a.active-menu {
+    font-weight: 900;
+    position: relative;
+}
+
+.header .inner-head .inner-menu .menu li a.active-menu::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    background: var(--color2);
+    transform: scale(1, 1);
+    transition: none;
+}
+
+.header .inner-head .inner-menu .menu li a:hover::after {
+    transform: scale(1, 1);
+}
+
+
+.header .inner-head .inner-menu .menu li a {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: var(--color2);
+    padding-bottom: 10px;
+
+}
+
+.header .inner-action .btn-action {
+    font-weight: 900;
+    color: var(--color2);
+    padding: 10px 20px;
+}
+
+.header .inner-menu-mb {
+    display: none;
+}
+
+.header .menu-mb {
+    display: none;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(226, 216, 216);
+    width: 100vw;
+    position: absolute;
+    z-index: 100;
+    top: 70px;
+    left: -15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.header .menu-mb li {
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.header .menu-mb li a {
+    padding: 20px;
+    color: var(--color2);
+    font-size: 1.7rem;
+    font-weight: 700;
+    width: 150px;
+    display: inline-block;
+}
+
+.header .menu-mb li a i {
+    margin-right: 10px;
+}
+
+.header .menu-mb li a:hover {
+    background: white;
+}
+
+@media (max-width:991.98px) {
+    .header .inner-head .inner-menu ul li {
+        display: none;
+    }
+
+    .header .menu-mb {
+        display: none;
+    }
+
+    .header .inner-head .inner-menu-mb {
+        display: block;
+        font-size: 3.0rem;
+        color: var(--color2);
+    }
+
+    .header .inner-action .btn-action {
+        display: none;
+    }
+}
+
+@media (max-width:375px) {
+    .container-fluid {
+        padding: 0 15px;
+    }
+}
+
+/*End  Header */
+/* Banner */
+.banner .container,
+.banner .row,
+.banner .col-12 {
+    position: static;
+}
+
+.banner {
+    width: 100vw;
+    height: 75vh;
+    position: relative;
+}
+
+.banner .list .item {
+    position: absolute;
+    inset: 0 0 0 0;
+}
+
+.banner .list .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.banner .list .item .content {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    transform: translateX(-50%);
+    padding-right: 30%;
+}
+
+.banner .list .item .title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color2);
+    text-align: center;
+}
+
+
+.banner .list .item:nth-child(1) {
+    z-index: 1;
+}
+
+.banner .list .item:nth-child(1) .content .title {
+    transform: translateY(50px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s 1s linear 1 forwards;
+}
+
+@keyframes showContent {
+    to {
+        transform: translateY(0px);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+.banner .list .item:nth-child(1) .content .title {
+    animation-delay: 1.2s !important;
+}
+
+
+.banner .list .item:nth-child(1) img {
+    width: 150px;
+    height: 220px;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    border-radius: 30px;
+    animation: showImage .5s linear 1 forwards;
+}
+
+@keyframes showImage {
+    to {
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+
+@media (max-width: 376px) {
+    .banner .list .item .content {
+        padding: 0;
+    }
+
+    .banner .list .item .title {
+        font-size: 1.5rem;
+    }
+}
+
+/* End Banner */
+/* Criteria */
+.criteria {
+    padding: 50px 0;
+}
+
+.criteria .col-4 {
+    padding: 30px;
+}
+
+.criteria .inner-box {
+    position: relative;
+    padding: 10px 20px;
+    color: var(--color3);
+    text-align: center;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+.criteria .inner-box .inner-icon {
+    position: absolute;
+    left: 94%;
+    top: -26%;
+    margin: 0;
+}
+
+.criteria .inner-box .inner-icon i {
+    font-size: 4.0rem;
+    color: var(--color2);
+}
+
+.criteria .inner-box .inner-title {
+    color: var(--color2);
+    font-weight: 900;
+    margin-top: 0;
+    font-size: 2.3rem;
+}
+
+.criteria .inner-box .inner-desc {
+    font-size: 1.6rem;
+    color: black;
+    margin: 0;
+}
+
+@media (max-width: 450px) {
+    .criteria .inner-box {
+        margin-bottom: 30px;
+    }
+
+    .criteria .inner-box .inner-icon {
+        left: 90%;
+        top: -20%;
+    }
+}
+
+/* End Criteria */
+/* Intro */
+.intro {
+    padding: 50px 0;
+}
+
+.intro .inner-main {
+    padding: 25px 0;
+}
+
+.intro .title {
+    font-weight: 700;
+    color: var(--color2);
+    margin: 0;
+    font-size: 2.8rem;
+}
+
+.intro .desc {
+    color: black;
+    line-height: 1.6;
+    font-weight: 500;
+    font-size: 1.7rem;
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.intro .btn {
+    padding: 10px 30px;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    border-width: 2px;
+}
+
+.intro .btn:hover {
+    color: white;
+}
+
+/* End Intro */
+/* Rom-rent */
+.room-rent {
+    padding: 50px 0;
+}
+
+.room-rent p {
+    margin: 0;
+}
+
+.room-rent .inner-body {
+    position: relative;
+}
+
+.room-rent .inner-body .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-top: 10px;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+}
+
+.room-rent .btn-l-room-1,
+.room-rent .btn-l-room-2 {
+    left: -25px;
+}
+
+.room-rent .btn-r-room-1,
+.room-rent .btn-r-room-2 {
+    right: -25px;
+}
+
+.room-rent .inner-body .row::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-room-2,
+.carousel-room-1 {
+    scroll-behavior: smooth;
+}
+
+.carousel-room-1.no-transition,
+.carousel-room-2.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel-room-1::-webkit-scrollbar,
+.carousel-room-2::-webkit-scrollbar {
+    display: none;
+}
+
+.room-rent .inner-head {
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 5px solid var(--color2);
+}
+
+.room-rent h2 {
+    color: var(--color2);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 2.8rem;
+}
+
+.room-rent .inner-body .inner-box {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border-bottom: 6px solid transparent;
+    background-color: white;
+    transition: 1s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.room-rent .inner-body .inner-box:hover {
+    border-bottom-color: var(--color2);
+}
+
+
+.room-rent .inner-body .inner-box .inner-title {
+    margin: 16px 0;
+    font-weight: 700;
+    font-size: 2.2rem;
+}
+
+.room-rent .inner-body .inner-box .inner-desc {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.room-rent .inner-body .inner-box .inner-convenient {
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-rent .inner-body .inner-box .inner-convenient img {
+    margin-right: 10px;
+}
+
+.room-rent .inner-body .inner-box .inner-location {
+    margin: 0 0 16px;
+
+}
+
+.room-rent .inner-body .inner-box .inner-location a {
+    color: black;
+    display: flex;
+    align-items: center;
+}
+
+.room-rent .inner-body .inner-box .inner-location p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+
+
+.room-rent .inner-body .inner-box .inner-bot {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.room-rent .inner-body .inner-box .inner-bot .inner-price {
+    flex-grow: 1;
+    font-weight: 700;
+}
+
+.room-rent .inner-body .inner-box .inner-bot .btn {
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+.room-rent .inner-body .inner-box .inner-img {
+    margin: 0 auto;
+}
+
+.room-rent .inner-body .inner-box .inner-img img {
+    width: 290px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.img2 {
+    display: none;
+}
+
+.room-rent .inner-body .inner-box .inner-img:hover .img1 {
+    display: none;
+}
+
+.room-rent .inner-body .inner-box .inner-img:hover .img2 {
+    display: block;
+}
+
+.room-rent .btn-seemore {
+    margin-top: 30px;
+    padding: 10px 30px;
+    text-transform: uppercase;
+    border-width: 3px;
+    font-size: 1.6rem;
+}
+
+@media (max-width: 1140px) {
+
+    .room-rent .btn-l-room-1,
+    .room-rent .btn-l-room-2 {
+        left: 5px;
+    }
+
+    .room-rent .btn-r-room-1,
+    .room-rent .btn-r-room-2 {
+        right: 5px;
+    }
+
+}
+
+/* End rom-rent */
+/* Comment */
+.comments {
+    color: var(--color2);
+    padding: 50px 0 100px;
+}
+
+.comments .inner-head {
+    margin-bottom: 20px;
+}
+
+.comments .inner-head .inner-title {
+    font-weight: 900;
+    position: relative;
+    font-size: 2.8rem;
+}
+
+.comments .inner-head .inner-desc {
+    text-align: center;
+    padding: 0 20px;
+    color: black;
+    font-weight: 500;
+}
+
+.wrapper {
+    width: 100%;
+    position: relative;
+}
+
+.comments .row {
+    flex-wrap: nowrap;
+}
+
+.comments .carousel-comments {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.comments .carousel-comments::-webkit-scrollbar {
+    display: none;
+}
+
+.comments .carousel-comments.no-transition {
+    scroll-behavior: auto;
+}
+
+.comments .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comments .inner-box {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    scroll-snap-align: start;
+    height: 340px;
+    border-radius: 8px;
+    border: 1px solid rgba(128, 128, 128, 0.468);
+}
+
+.comments .inner-box h3 {
+    font-size: 2.3rem;
+    margin-bottom: 15px;
+}
+
+.comments .inner-box img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+}
+
+.comments .inner-box .inner-comment {
+    flex-grow: 1;
+    text-align: justify;
+    padding: 0 20px;
+    color: black;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    line-height: 1.6;
+}
+
+.comments .inner-box .location {
+    color: var(--color2);
+}
+
+.comments .inner-btn {
+    position: relative;
+    margin-top: 50px;
+}
+
+.comments .btn-l {
+    left: 45%;
+}
+
+.comments .btn-r {
+    right: 45%;
+}
+
+@media (max-width: 1140px) {
+    .comments .btn-l {
+        left: 40%;
+    }
+
+    .comments .btn-r {
+        right: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .comments .btn-l {
+        left: 30%;
+    }
+
+    .comments .btn-r {
+        right: 30%;
+    }
+}
+
+/* End Comment */
+/* Footer */
+.footer {
+    margin-top: 30px;
+    background-image: url(../image/bg-footer.png);
+    background-color: var(--color3);
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 30px;
+}
+
+.footer input {
+    width: 40%;
+    display: inline-block;
+    font-size: 1.6rem;
+}
+
+.footer button {
+    padding: .375rem .75rem;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    background-color: transparent;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transition: 1s ease;
+    margin-left: 5px;
+}
+
+.footer button:hover {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    color: var(--color3);
+}
+
+.footer h2 {
+    font-size: 2.8rem;
+}
+
+.footer h3 {
+    margin: 0 0 16px;
+    font-size: 2.3rem;
+}
+
+.footer .inner-box {
+    margin-bottom: 16px;
+}
+
+.footer .inner-box a {
+    color: white;
+    font-size: 1.8rem;
+}
+
+.footer .inner-box a:hover {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 900
+}
+
+.footer .inner-social i {
+    color: white;
+    margin-right: 10px;
+}
+
+
+/* End Footer */

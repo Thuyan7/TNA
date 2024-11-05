@@ -1,0 +1,163 @@
+img {
+    width: 100%;
+}
+
+.inner-back {
+    color: var(--color2);
+    position: absolute;
+    top: 9%;
+    left: 0;
+    padding: 10px 15px;
+    border: 2px solid var(--color2);
+    border-radius: 50%;
+}
+
+.inner-back:active {
+    transform: scale(0.8);
+}
+
+.inner-img .image {
+    height: 100vh;
+    padding: 70px 0;
+    object-fit: cover;
+}
+
+.inner-form {
+    flex-grow: 1;
+    padding: 70px 0;
+
+}
+
+.login .btn-login {
+    color: var(--color2);
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.inner-form .form {
+    padding: 70px 0;
+
+}
+
+.inner-form .form label {
+    margin-bottom: 10px;
+    color: var(--color2);
+    font-weight: 900;
+}
+
+.auth-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.auth-options .remember {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: grey;
+}
+
+.inner-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.inner-line div {
+    width: 100%;
+    height: 1px;
+    background-color: grey;
+}
+
+.inner-line span {
+    color: var(--color2);
+    font-weight: 900;
+}
+
+.auth-options .forgot {
+    color: var(--color2);
+}
+
+.auth-options .forgot:hover {
+    font-weight: 900;
+}
+
+.login-options img {
+    width: 20px;
+    height: 20px;
+}
+
+.login-options span {
+    flex-grow: 1;
+    text-align: center;
+    font-weight: 900;
+    color: var(--color2);
+}
+
+.register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.register span {
+    color: grey;
+}
+
+.register a {
+    color: var(--color2);
+    font-weight: 600;
+}
+
+input[type="text"],
+button,
+input[type="password"],
+.btn-login {
+    width: 100%;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+}
+
+.login-action a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button,
+.btn-login {
+    width: 100%;
+    background-color: white;
+    padding: 10px 20px;
+    border: 1px solid var(--color2);
+    outline: none;
+}
+
+@media (max-width: 767.98px) {
+    .inner-img {
+        display: none;
+    }
+
+    .login {
+        position: relative;
+        background: url('../image/login.jpg') no-repeat;
+        background-size: cover;
+    }
+
+    .login::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: #2624243c;
+    }
+
+}

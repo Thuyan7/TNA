@@ -1,0 +1,89 @@
+
+.style-body {
+    margin-top: 50px;
+    padding: 20px; /* Thêm padding cho body */
+    background-color: #fff; /* Màu nền cho vùng chứa */
+    border-radius: 10px; /* Bo tròn góc cho vùng chứa */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng cho vùng chứa */
+}
+
+h1 {
+    color: #053574; /* Màu chữ cho tiêu đề */
+    margin-bottom: 20px; /* Khoảng cách giữa tiêu đề và bảng */
+}
+
+table {
+    border-radius: 10px;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+    text-align: center;
+    border: 1px solid #ddd;
+    color: black;
+    padding: 12px;
+}
+
+th {
+    background-color: #007bff; /* Màu nền cho tiêu đề */
+    color: white; /* Màu chữ cho tiêu đề */
+    font-weight: bold;
+}
+
+td {
+    background-color: #f9f9f9; /* Màu nền cho ô */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+td:hover {
+    background-color: #e9ecef; /* Màu nền khi hover */
+}
+
+table td:nth-child(3),
+table td:nth-child(4) {
+    max-width: 200px; /* Đặt chiều rộng tối đa cho cột địa chỉ và mô tả */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+table td:nth-child(3):hover,
+table td:nth-child(4):hover {
+    white-space: normal; /* Cho phép hiển thị dòng mới khi hover */
+    background-color: #ffffff; /* Màu nền trắng khi hover */
+    position: relative;
+    z-index: 1; /* Đưa ô lên trên cùng khi hover */
+}
+
+table td ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+table td ul li {
+    text-align: center;
+}
+
+table td a {
+    display: inline-block;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #007bff;
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+table td a:hover {
+    background-color: #e7f0ff;
+    color: #0056b3;
+}

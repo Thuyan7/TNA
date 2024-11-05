@@ -1,0 +1,80 @@
+.header {
+    position: sticky;
+}
+
+/* Contact */
+.contact {
+    color: black;
+    margin: 10px 0 30px;
+}
+
+.contact h2,
+.contact h3 {
+    text-transform: capitalize;
+    font-size: 2.3rem;
+}
+
+.contact .inner-contact p a:hover {
+    font-weight: 800
+}
+
+.contact h2 {
+    font-weight: 600;
+    color: var(--color2);
+    margin: 40px 0;
+    font-size: 3rem;
+}
+
+.contact h3 {
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.contact .address p {
+    font-size: 2.0rem;
+    font-weight: 400;
+}
+
+.contact textarea,
+.contact input {
+    width: 100%;
+    max-width: 100%;
+    padding: 25px 10px;
+    border-radius: 5px;
+    font-size: 2.0rem;
+}
+
+.contact textarea {
+    overflow-y: hidden;
+}
+
+.contact button {
+    background-color: var(--color3);
+    color: white;
+    padding: 6px 40px;
+    border-radius: 5px;
+    border: none;
+    transition: 0.5s ease;
+    border: 1px solid;
+}
+
+label::after {
+    content: "*";
+    color: red;
+}
+
+.contact button:hover {
+    color: var(--color3);
+    background-color: transparent;
+    font-weight: 600;
+}
+
+.contact a {
+    color: black;
+}
+
+/* End Contact */
+iframe {
+    width: 100%;
+    height: 80vh;
+}
