@@ -1,37 +1,123 @@
-/* CSS cho thanh tìm kiếm */
-.search-bar {
+.break-word {
+    white-space: normal; /* Cho phép xuống dòng trong nội dung */
+    word-wrap: break-word; /* Đảm bảo các từ dài sẽ xuống dòng */
+}
+.break-word a {
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.error-message {
+    background-color: #f8d7da; /* Light red background for error */
+    color: #721c24;            /* Dark red text for visibility */
+    border: 1px solid #f5c6cb; /* Red border to define the box */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.error-message p {
+    margin: 0;
+}
+
+/* Đặt vị trí của dropdown */
+.user-dropdown {
+    position: relative;
     display: inline-block;
-    position: absolute;
-    right: 150px; /* Điều chỉnh vị trí ngang của thanh tìm kiếm */
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.search-form {
-    display: flex;
-    align-items: center;
-}
-
-.search-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    outline: none;
-    width: 200px; /* Độ rộng của ô tìm kiếm */
-}
-
-.search-button {
-    padding: 8px 12px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 0 4px 4px 0;
-    color: white;
     cursor: pointer;
 }
 
-.search-button:hover {
-    background-color: #0056b3;
+/* Chỉnh sửa giao diện của phần dropdown toggle */
+.user-dropdown .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 25px;
+    color: #053574;
+    font-weight: bold;
+    font-size: 16px;
 }
+
+.user-dropdown .dropdown-toggle:hover {
+    background-color: #e9ecef;
+}
+
+.user-dropdown .dropdown-toggle i {
+    margin-right: 5px; /* Tạo khoảng cách giữa biểu tượng và tên người dùng */
+}
+
+/* Ẩn dropdown menu mặc định */
+.user-dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+/* Hiển thị menu khi hover */
+.user-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Style cho các item trong dropdown */
+.user-dropdown .dropdown-menu li {
+    list-style: none;
+    padding: 10px 15px;
+}
+
+.user-dropdown .dropdown-menu li a,
+.user-dropdown .dropdown-menu li button {
+    display: block;
+    text-decoration: none;
+    color: #053574;
+    padding: 5px 0;
+    font-size: 16px;
+}
+
+/* Hover effect cho các item */
+.user-dropdown .dropdown-menu li a:hover,
+.user-dropdown .dropdown-menu li button:hover {
+    background-color: #f8f9fa;
+    color: #0056b3;
+}
+
+/* Chỉnh sửa kiểu cho button trong form */
+.user-dropdown .dropdown-menu form button {
+    background: none;
+    border: none;
+    color: #053574;
+    padding: 8px 12px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.user-dropdown .dropdown-menu form button:hover {
+    background-color: #e9ecef;
+}
+
+/* Thêm hiệu ứng chuyển động cho phần toggle */
+.user-dropdown .dropdown-toggle i.fa-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+/* Thay đổi góc của chevron khi dropdown mở */
+.user-dropdown:hover .dropdown-toggle i.fa-chevron-down {
+    transform: rotate(180deg);
+}
+
 /* Button */
 .btn {
     padding: 5px 20px;

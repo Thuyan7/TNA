@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
@@ -19,12 +20,14 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    @Autowired
-    private AuthenticationSuccessHandler customSuccessHandler;
+    private final CustomUserDetailService userDetailsService;
+    private final CustomSuccesHandler succesHandler;
+    private final CustomFailureHandler failureHandler;
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new CustomUserDetailService();
+    public SecurityConfig(CustomUserDetailService userDetailsService, CustomSuccesHandler succesHandler, CustomFailureHandler failureHandler) {
+        this.userDetailsService = userDetailsService;
+        this.succesHandler = succesHandler;
+        this.failureHandler = failureHandler;
     }
 
     @Bean
@@ -35,7 +38,7 @@ public class SecurityConfig {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService());
+        authProvider.setUserDetailsService(userDetailsService);
         authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
@@ -46,9 +49,8 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/**","/post/**","/comment/**").hasRole("USER")
-                        .requestMatchers("/css/**", "/js/**", "/image/**","/bootstrap/**").permitAll()
-                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/user/**").hasRole("USER")
+                        .requestMatchers("/login", "/register","/home","/post","/introduce","/contact","/css/**", "/js/**", "/image/**","/bootstrap/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .formLogin(form -> form
@@ -56,12 +58,16 @@ public class SecurityConfig {
                         .defaultSuccessUrl("/redirectAfterLogin", true)
                         .usernameParameter("email")
                         .passwordParameter("password")
-                        .successHandler(customSuccessHandler)
-                        .failureUrl("/login?error")
+                        .successHandler(succesHandler)
+                        .failureHandler(failureHandler)
+                        .failureUrl("/login?error=true")
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/home")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll()
                 );
 
         return http.build();

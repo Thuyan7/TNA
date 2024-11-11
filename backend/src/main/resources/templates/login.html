@@ -28,6 +28,10 @@
             <div class="col-xl-6 col-md-6 col-lg-12">
                 <div class="inner-form">
                     <form th:action="@{/login}" method="post" class="form">
+                        <div th:if="${errorMessage}" class="error-message">
+                            <p th:text="${errorMessage}">Invalid username or password!</p>
+                        </div>
+
                         <label for="email">Tên đăng nhập</label>
                         <input type="text" name="email" id="email" class="form-control" required>
                         <label for="password">Mật khẩu</label>
@@ -45,7 +49,7 @@
                             <a th:href="@{/register}" class="">Tạo tại đây</a>
                         </div>
                     </form>
-                    <a th:href="@{/templates/user-home.html}" class="inner-back">
+                    <a th:href="@{/home}" class="inner-back">
                         <i class="fa-solid fa-arrow-left"></i>
                     </a>
                 </div>

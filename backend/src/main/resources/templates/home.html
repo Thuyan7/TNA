@@ -18,43 +18,36 @@
 </head>
 
 <body>
-<!-- Header -->
 <header class="header">
   <div class="container-fluid">
     <div class="row">
       <div class="col-12">
         <div class="inner-head">
           <div class="inner-logo">
-            <a th:href="@{/templates/admin-home.html}">
+            <a th:href="@{/home}">
               <img th:src="@{/image/logo.png}" alt="logo">
             </a>
           </div>
           <div class="inner-menu">
             <ul class="menu">
-              <li><a th:href="@{/templates/admin-home.html}" class="active-menu">Trang Chủ</a></li>
-              <li><a th:href="@{/templates/user-management.html}">Quản Lí Người Dùng</a></li>
-              <li><a th:href="@{/admin/post-manager}">Quản Lí Bài Đăng</a></li>
-              <li><a th:href="@{/review-manager.html}">Quản Lí Bình Luận</a></li>
+              <li><a th:href="@{/home}" class="active-menu">Trang Chủ</a></li>
+              <li><a th:href="@{/introduce}">Giới Thiệu</a></li>
+              <li><a th:href="@{/post}">Bài Đăng</a></li>
+              <li><a th:href="@{/contact}">Liên Hệ</a></li>
             </ul>
           </div>
-          <div class="inner-search">
-            <input type="text" class="search-input" placeholder="Tìm kiếm...">
-            <button class="search-btn">
-              <i class="fa-solid fa-search"></i>
-            </button>
-          </div>
           <div class="inner-action">
-            <h1>Chào mừng, <span th:text="${email}">Người dùng</span>!</h1>
+            <a th:href="@{/login}" class="btn-action">Đăng Nhập</a>
           </div>
           <div class="inner-menu-mb">
             <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
             <ul class="menu-mb">
-              <li><a th:href="@{/admin/admin-home}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
-              <li><a th:href="@{/admin/user-manager}"><i class="fa-solid fa-house"></i>Quản Lí Người Dùng</a></li>
-              <li><a th:href="@{/admin/post-manager}"><i class="fa-solid fa-house"></i>Quản Lí Bài Đăng</a></li>
-              <li><a th:href="@{/admin/review-manager}"><i class="fa-solid fa-house"></i>Quản Lí Bình Luận</a></li>
+              <li><a th:href="@{/hom}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
+              <li><a th:href="@{/introduce}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
+              <li><a th:href="@{/post}"><i class="fa-solid fa-house"></i>Bài Đăng</a></li>
+              <li><a th:href="@{/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
               <li class="item-action">
-                <a th:href="@{/login.html}">Đăng Nhập</a>
+                <a th:href="@{/login}">Đăng Nhập</a>
                 <a th:href="@{/logout}">Đăng Xuất</a>
               </li>
             </ul>
@@ -175,7 +168,7 @@
               tảng trực tuyến tiện lợi, uy tín, nơi bạn có thể dễ dàng tra cứu thông tin chi tiết và
               minh bạch về các phòng trọ đang cho thuê...
             </p>
-            <a th:href="@{/introduce.html}" class="action btn">Tìm hiểu thêm</a>
+            <a th:href="@{/introduce}" class="action btn">Tìm hiểu thêm</a>
           </div>
         </div>
       </div>
@@ -189,47 +182,29 @@
     <div class="row">
       <div class="col-12">
         <div class="inner-head">
-          <h2>Phòng Trọ</h2>
+          <h2>Bài Đăng</h2>
         </div>
       </div>
     </div>
-    <div class="inner-body">
+    <div class="inner-body" >
       <div class="btn-l-room-1 btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
-      <div class="row carousel-room-1">
-        <div class="card col-xl-4 col-lg-6 col-12">
+      <div class="row carousel-room-1" >
+        <div class="card col-xl-4 col-lg-6 col-12" th:each="post :${posts}">
           <div class="inner-box">
-            <div class="inner-img">
-              <img th:src="@{/image/pt-img1.1.jpg}" alt="" class="img1 m-img">
-              <img th:src="@{/image/pt-img1.2.jpg}"alt="" class="img2 m-img">
+            <div class="inner-img" th:if="${post.listImages != null and !post.listImages.isEmpty()}">
+              <img th:src="@{'/' + ${post.listImages[0].url}}" alt="Image Description" class="image">
             </div>
-            <p class="inner-title text-center">Phòng trọ 1</p>
-            <p class="inner-desc">Phòng trọ cho thuê từ 1-2 người</p>
-            <div class="inner-convenient">
-              <figure class="convenient">
-                <img width="20px" height="20px" th:src="@{https://img.icons8.com/ios/50/fridge.png}"
-                     alt="fridge" />
-                <img width="20px" height="20px" th:src="@{https://img.icons8.com/ios/50/bed.png}"
-                     alt="bed" />
-                <img width="20px" height="20px"
-                     th:src="@{https://img.icons8.com/carbon-copy/100/air-conditioner.png}"
-                     alt="air-conditioner" />
-              </figure>
-              <div class="acreage">
-                <img width="20px" height="20px" th:src="@{https://img.icons8.com/ios/50/room.png}"
-                     alt="room" />
-                <span>120m<sup>2</sup> X 120m<sup>2</sup></span>
-              </div>
-            </div>
+            <p class="inner-title text-center" th:text="${post.title}"></p>
             <div class="inner-location">
-              <a href="https://www.google.com/maps/place/279+%C4%90.+Mai+%C4%90%C4%83ng+Ch%C6%A1n,+Ho%C3%A0+H%E1%BA%A3i,+Ng%C5%A9+H%C3%A0nh+S%C6%A1n,+%C4%90%C3%A0+N%E1%BA%B5ng+550000,+Vi%E1%BB%87t+Nam/@15.9902661,108.2439063,17z/data=!3m1!4b1!4m6!3m5!1s0x3142109909a5c113:0xec183e71a660c3b8!8m2!3d15.990261!4d108.2464866!16s%2Fg%2F11hd1zsth0?entry=ttu"
+              <a th:href="${post.location.link}"
                  target="_blank">
                 <i class="fa-solid fa-map-location"></i>
-                <p>279 Mai Đăng Chơn,Ngũ Hành Sơn,Đà Nẵng</p>
+                <p th:text="${post.location.address}"></p>
               </a>
             </div>
             <div class="inner-bot">
-              <p class="inner-price">1.5M-2M đ/Tháng</p>
-              <a href="javascript:void(0)" class="btn" onclick="showLoginModal()">Xem Phòng</a>
+              <p class="inner-price" th:text="${post.price}"></p>
+              <a th:href="@{/login}" class="btn">Xem Phòng</a>
             </div>
           </div>
         </div>
@@ -239,39 +214,35 @@
     <div class="row">
       <div class="col-12">
         <div class="text-center">
-          <a th:href="@{/templates/post-management.html}" class="btn btn-seemore">Xem Thêm</a>
+          <a th:href="@{/post}" class="btn btn-seemore">Xem Thêm</a>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- End Phòng trọ -->
-<!-- Comments -->
 <div class="comments">
   <div class="container">
     <div class="row">
       <div class="col-12">
         <div class="inner-head text-center">
           <h2 class="inner-title">
-            Ý kiến của khách hàng
+            Bình luận của khách hàng
           </h2>
         </div>
       </div>
     </div>
     <div class="wrapper">
       <div class="row carousel-comments">
-        <div class="card col-xl-4 col-lg-6 col-12">
+        <div class="card col-xl-4 col-lg-6 col-12" th:each="comment :${comments}">
           <div class="inner-box">
-            <img th:src="@{/image/lttn.jpg}" alt="img">
-            <h2>Lê Thị Thúy Nga</h2>
-            <p class="inner-comment">
-              Mai e có xíu việc nên mời anh chị qua chơi á. Công nhận ở cái phòng này em hợp hay
-              sao á, em vừa được thăng chức lên làm leader, vừa được khai trương làm chủ
-            </p>
-            <div class="location">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Tử Hà 01-Điện Ngọc-Điện Bàn-Quảng Nam</span>
+            <h2 th:text="${comment.user.email}"></h2>
+            <div class="comment-rating">
+                            <span th:each="i : ${#numbers.sequence(0, 4)}">
+                             <i class="fa-star" th:class="${i < comment.rating ? 'fas fa-star' : 'far fa-star'}"></i>
+                            </span>
             </div>
+            <p class="inner-comment" th:text="${comment.content}"></p>
+            <a th:href="@{/login}" class="btn">Xem Bình Luận</a>
           </div>
         </div>
       </div>
@@ -282,7 +253,6 @@
     </div>
   </div>
 </div>
-<!-- End Comments -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -294,7 +264,7 @@
       </div>
       <div class="modal-body text-center">
         <p style="color: black;">Vui lòng đăng nhập để tiếp tục.</p>
-        <a th:href="@{/login.html}" class="btn btn-primary">Đăng Nhập</a>
+        <a th:href="@{/login}" class="btn btn-primary">Đăng Nhập</a>
       </div>
     </div>
   </div>
@@ -355,23 +325,23 @@
             TNNA
           </h2>
           <p>
-            <a th:href="@{/templates/admin-home.html}">
+            <a th:href="@{/home}">
               Trang chủ
             </a>
           </p>
           <p>
-            <a th:href="@{/templates/user-management.html}">
-              Quản Lí Người Dùng
+            <a th:href="@{/introduce}">
+              Giới Thiệu
             </a>
           </p>
           <p>
-            <a th:href="@{/templates/post-management.html}">
-              Quản Lí Bài Đăng
+            <a th:href="@{/post}">
+              Bài Đăng
             </a>
           </p>
           <p>
-            <a th:href="@{/review-manager.html}">
-              Quản Lí Bình Luận
+            <a th:href="@{/contact}">
+              Liên Hệ
             </a>
           </p>
         </div>

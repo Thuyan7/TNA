@@ -37,15 +37,21 @@
                             <li><a th:href="@{/contact}">Liên Hệ</a></li>
                         </ul>
                     </div>
-                    <div class="inner-search">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm...">
-                        <button class="search-btn">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
+                    <div class="user-dropdown">
+                        <div class="dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                            <span th:text="${email}">Tên Người Dùng</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/user/profile}">Quản Lí Cá Nhân</a></li>
+                            <li><form th:action="@{/logout}" method="post">
+                                <button type="submit">Đăng Xuất</button>
+                            </form>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="inner-action">
-                        <h1>Chào mừng, <span th:text="${email}">Người dùng</span>!</h1>
-                    </div>
+
                     <div class="inner-menu-mb">
                         <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
                         <ul class="menu-mb">
@@ -55,7 +61,7 @@
                             <li><a th:href="@{/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
                             <li class="item-action">
                                 <a th:href="@{/login}">Đăng Nhập</a>
-                                <a th:href="@{/logout}">Đăng Xuất</a>
+                                <a th:href="@{/home}">Đăng Xuất</a>
                             </li>
                         </ul>
                     </div>
@@ -189,7 +195,7 @@
         <div class="inner-body" >
             <div class="btn-l-room-1 btn-arrow"><i class="fa-solid fa-arrow-left"></i></div>
             <div class="row carousel-room-1" >
-                <div class="card col-xl-4 col-lg-6 col-12" th:each="post :${posts}">
+                <div class="card col-xl-4 col-lg-6 col-12" th:each="post: ${posts}">
                     <div class="inner-box">
                         <div class="inner-img" th:if="${post.listImages != null and !post.listImages.isEmpty()}">
                             <img th:src="@{'/' + ${post.listImages[0].url}}" alt="Image Description" class="image">
@@ -349,7 +355,6 @@
         </div>
     </div>
 </footer>
-
 <script th:src="@{/bootstrap/jquery.slim.min.js}"></script>
 <script th:src="@{/bootstrap/bootstrap.bundle.min.js}"></script>
 <script th:src="@{/js/header.js}"></script>

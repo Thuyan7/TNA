@@ -24,38 +24,41 @@
                 <div class="col-12">
                     <div class="inner-head">
                         <div class="inner-logo">
-                            <a th:href="@{/templates/admin-home.html}">
+                            <a th:href="@{/user/home}">
                                 <img th:src="@{/image/logo.png}" alt="logo">
                             </a>
                         </div>
                         <div class="inner-menu">
                             <ul class="menu">
-                                <li><a th:href="@{/templates/admin-home.html}" class="active-menu">Trang Chủ</a></li>
-                                <li><a th:href="@{/introduce.html}">Giới Thiệu</a></li>
-                                <li><a th:href="@{/templates/post-management.html}">Bài Đăng</a></li>
-                                <li><a th:href="@{/contact.html}">Liên Hệ</a></li>
-                                <li><a th:href="@{/create_post}" >Đăng Bài</a></li>
+                                <li><a th:href="@{/user/home}" class="active-menu">Trang Chủ</a></li>
+                                <li><a th:href="@{/introduce}">Giới Thiệu</a></li>
+                                <li><a th:href="@{/post}">Bài Đăng</a></li>
+                                <li><a th:href="@{/contact}">Liên Hệ</a></li>
                             </ul>
                         </div>
-                        <div class="inner-search">
-                            <input type="text" class="search-input" placeholder="Tìm kiếm...">
-                            <button class="search-btn">
-                                <i class="fa-solid fa-search"></i>
-                            </button>
-                        </div>
-                        <div class="inner-action">
-                            <h1>Chào mừng, <span th:text="${email}">Người dùng</span>!</h1>
+                        <div class="user-dropdown">
+                            <div class="dropdown-toggle">
+                                <i class="fa-solid fa-user"></i>
+                                <span th:text="${email}"></span>
+                                <i class="fa-solid fa-chevron-down"></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a th:href="@{/admin/profile}">Quản Lí Cá Nhân</a></li>
+                                <li><form th:action="@{/logout}" method="post">
+                                    <button type="submit">Đăng Xuất</button>
+                                </form></li>
+                            </ul>
                         </div>
                         <div class="inner-menu-mb">
                             <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
                             <ul class="menu-mb">
-                                <li><a th:href="@{/templates/admin-home.html}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
-                                <li><a th:href="@{/introduce.html}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
-                                <li><a th:href="@{/templates/post-management.html}"><i class="fa-solid fa-house"></i>Bài Đăng</a></li>
-                                <li><a th:href="@{/contact.html}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
+                                <li><a th:href="@{/user/home}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
+                                <li><a th:href="@{/introduce}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
+                                <li><a th:href="@{/post}"><i class="fa-solid fa-house"></i>Bài Đăng</a></li>
+                                <li><a th:href="@{/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
                                 <li class="item-action">
-                                    <a th:href="@{/login.html}">Đăng Nhập</a>
-                                    <a th:href="@{/logout}">Đăng Xuất</a>
+                                    <a th:href="@{/login}">Đăng Nhập</a>
+                                    <a th:href="@{/home}">Đăng Xuất</a>
                                 </li>
                             </ul>
                         </div>
@@ -133,8 +136,6 @@
         </form>
     </div>
 </div>
-
 <script th:src="@{/js/create-post.js}"></script>
-
 </body>
 </html>

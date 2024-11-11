@@ -28,3 +28,4 @@ menuMbIcon.onclick = function () {
         menuMb.style.display = 'block';
     }
 };
+

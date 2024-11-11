@@ -35,21 +35,28 @@
               <li><a th:href="@{/admin/comment-management}">Quản Lí Bình Luận</a></li>
             </ul>
           </div>
-          <div class="inner-search">
-            <input type="text" class="search-input" placeholder="Tìm kiếm...">
-            <button class="search-btn">
-              <i class="fa-solid fa-search"></i>
-            </button>
+          <div class="user-dropdown">
+            <div class="dropdown-toggle">
+              <i class="fa-solid fa-user"></i>
+              <span th:text="${email}"></span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/admin/profile}">Quản Lí Cá Nhân</a></li>
+              <li><form th:action="@{/logout}" method="post">
+                <button type="submit">Đăng Xuất</button>
+              </form></li>
+            </ul>
           </div>
           <div class="inner-menu-mb">
             <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
             <ul class="menu-mb">
               <li><a th:href="@{/admin/home}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
-              <li><a th:href="@{/admin/user-manager}"><i class="fa-solid fa-house"></i>Quản Lí Người Dùng</a></li>
-              <li><a th:href="@{/admin/post-manager}"><i class="fa-solid fa-house"></i>Quản Lí Bài Đăng</a></li>
-              <li><a th:href="@{/admin/review-manager}"><i class="fa-solid fa-house"></i>Quản Lí Bình Luận</a></li>
+              <li><a th:href="@{/admin/user-management}"><i class="fa-solid fa-house"></i>Quản Lí Người Dùng</a></li>
+              <li><a th:href="@{/admin/post-management}"><i class="fa-solid fa-house"></i>Quản Lí Bài Đăng</a></li>
+              <li><a th:href="@{/admin/comment-management}"><i class="fa-solid fa-house"></i>Quản Lí Bình Luận</a></li>
               <li class="item-action">
-                <a th:href="@{/login.html}">Đăng Nhập</a>
+                <a th:href="@{/login}">Đăng Nhập</a>
                 <a th:href="@{/logout}">Đăng Xuất</a>
               </li>
             </ul>
@@ -82,8 +89,8 @@
         <a href="mailto:${comment.user.email}" th:text="${comment.user.email}"></a>
       </td>
       <td>
-        <form th:action="@{/admin/comment-management/updateComment}" method="post">
-          <input type="hidden" th:name="postId" th:value="${comment.id}" />
+        <form th:action="@{/admin/comment-management/updateStatus}" method="post">
+          <input type="hidden" th:name="commentId" th:value="${comment.id}" />
           <select name="approved" onchange="this.form.submit()">
             <option value="true" th:selected="${comment.approved}">Đã Duyệt</option>
             <option value="false" th:selected="${!comment.approved}">Chưa Duyệt</option>

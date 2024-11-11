@@ -22,16 +22,20 @@ import java.util.List;
 @Controller
 @RequestMapping("/post")
 public class PostController {
+    private final PostService postService;
+    private final AmenityReponsitory amenityReponsitory;
+    private final UserRepository userRepository;
+    private final CommentReponsitory commentReponsitory;
+    private final PostRepository postRepository;
+
     @Autowired
-    private  PostService postService;
-    @Autowired
-    private  AmenityReponsitory amenityReponsitory;
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private CommentReponsitory commentReponsitory;
-    @Autowired
-    private PostRepository postRepository;
+    public PostController(PostService postService,AmenityReponsitory amenityReponsitory, UserRepository userRepository,CommentReponsitory commentReponsitory,PostRepository postRepository){
+        this.postService = postService;
+        this.amenityReponsitory = amenityReponsitory;
+        this.userRepository = userRepository;
+        this.commentReponsitory = commentReponsitory;
+        this.postRepository = postRepository;
+    }
 
     @GetMapping("/create_post")
     public String showCreatePostPage(Model model , Principal principal){
@@ -53,20 +57,28 @@ public class PostController {
     }
 
     @GetMapping
-    public String postPage(Model model){
+    public String postPage(Model model, Principal principal) {
+        if(principal != null){
+            String email = principal.getName();
+            model.addAttribute("email", email);
+        }
         List<Post> posts = postRepository.findByApprovedTrue();
         model.addAttribute("posts", posts);
         return "post";
     }
 
     @GetMapping("/detail/{id}")
-    public String postDetail(@PathVariable int id, Model model){
-        Post post = postRepository.findById(id);
-        List<Post> posts = postService.getRandomPost(3);
-        List<Comment> comments = commentReponsitory.findByPostIdAndApprovedTrue(id);
-        model.addAttribute("post", post);
-        model.addAttribute("posts", posts);
-        model.addAttribute("comments", comments);
+    public String postDetail(@PathVariable int id, Model model,Principal principal){
+        if(principal != null){
+            String email = principal.getName();
+            Post post = postRepository.findById(id);
+            List<Post> posts = postService.getRandomPost(3);
+            List<Comment> comments = commentReponsitory.findByPostIdAndApprovedTrue(id);
+            model.addAttribute("post", post);
+            model.addAttribute("posts", posts);
+            model.addAttribute("comments", comments);
+            model.addAttribute("email", email);
+        }
         return "postdetail";
     }
 }

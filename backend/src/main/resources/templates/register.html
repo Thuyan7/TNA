@@ -23,15 +23,30 @@
             <div class="col-xl-6 col-md-6 col-12">
                 <div class="inner-form">
                     <form th:action="@{/register}" method="post" class="form">
+
+                        <div th:if="${error1} or ${error2} or ${error3}" class="error-message">
+                            <p th:if="${error1}" th:text="${error1}"></p>
+                            <p th:if="${error2}" th:text="${error2}"></p>
+                            <p th:if="${error3}" th:text="${error3}"></p>
+                        </div>
+
+                        <label for="fullName">Họ Và Tên</label>
+                        <input type="text" name="fullName" id="fullName" class="form-control" required>
+
                         <label for="email">Email</label>
-                        <input type="text" name="email" id="email" class="form-control" required>
+                        <input type="text" name="email" id="email" class="form-control" required >
+
                         <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="phone" class="form-control" required>
+                        <input type="text" name="phone" id="phone" class="form-control" required >
+
                         <label for="password">Mật khẩu</label>
                         <input type="password" name="password" id="password" class="form-control" required>
+
+                        <label for="confirmPassword">Nhập Lại Mật Khẩu</label>
+                        <input type="password" name="confirmPassword" id="confirmPassword" class="form-control" required>
+
                         <button type="submit" class="btn-register">Đăng Ký</button>
-                        <div class="inner-line">
-                        </div>
+                        <div class="inner-line"></div>
                         <div class="login">
                             <span>Bạn đã có tài khoản ?</span>
                             <a th:href="@{/login}" class="">Đăng nhập ở đây</a>
@@ -47,6 +62,6 @@
         </div>
     </div>
 </div>
+<!--<script th:href="@{/js/register.js}"></script>-->
 </body>
-
 </html>

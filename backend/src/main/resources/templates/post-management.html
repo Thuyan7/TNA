@@ -35,14 +35,18 @@
               <li><a th:href="@{/admin/comment-management}">Quản Lí Bình Luận</a></li>
             </ul>
           </div>
-          <div class="inner-search">
-            <input type="text" class="search-input" placeholder="Tìm kiếm...">
-            <button class="search-btn">
-              <i class="fa-solid fa-search"></i>
-            </button>
-          </div>
-          <div class="inner-action">
-            <h1>Chào mừng, <span th:text="${email}">Người dùng</span>!</h1>
+          <div class="user-dropdown">
+            <div class="dropdown-toggle">
+              <i class="fa-solid fa-user"></i>
+              <span th:text="${email}"></span>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <ul class="dropdown-menu">
+              <li><a th:href="@{/admin/profile}">Quản Lí Cá Nhân</a></li>
+              <li><form th:action="@{/logout}" method="post">
+                <button type="submit">Đăng Xuất</button>
+              </form></li>
+            </ul>
           </div>
           <div class="inner-menu-mb">
             <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
@@ -76,15 +80,15 @@
       <th>Ngày Đăng</th>
       <th>Người Đăng</th>
       <th>Tình Trạng</th>
-      <th>Hành Động</th>
+      <th>Đánh Giá</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="post : ${posts}">
       <td th:text="${post.title}"></td>
-      <td th:text="${post.price}"></td>
-      <td>
-        <a th:href="${post.location.link}" th:text="${post.location.link}" target="_blank"></a>
+      <td><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</td>
+      <td class="break-word">
+        <a th:href="${post.location.link}" th:text="${post.location.address}" target="_blank"></a>
       </td>
       <td th:text="${post.description}"></td>
       <td>
@@ -113,6 +117,7 @@
           </select>
         </form>
       </td>
+      <td th:text="${averageRating[post.id]}"></td>
       <td>
         <form th:action="@{/admin/post-management/{id}(id=${post.id})}" method="post" id="deleteForm">
           <input type="hidden" name="_method" value="delete">

@@ -26,6 +26,7 @@ public class UserServiceImp implements UserService {
     @Override
     public User registerUser(UserDTO userDTO) {
         User user = new User();
+        user.setFullName(userDTO.getFullName());
         user.setEmail(userDTO.getEmail());
         user.setPhone(userDTO.getPhone());
         user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
@@ -45,4 +46,5 @@ public class UserServiceImp implements UserService {
         }
         return user;
     }
+
 }

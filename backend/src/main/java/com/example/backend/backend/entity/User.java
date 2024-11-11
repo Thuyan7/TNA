@@ -11,6 +11,7 @@ public class User {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
+    private String fullName;
     private String email;
     private String phone;
     private String password;
@@ -124,5 +125,13 @@ public class User {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 }

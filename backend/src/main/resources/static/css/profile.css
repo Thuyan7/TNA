@@ -1,0 +1,198 @@
+/* Profile Header Styles */
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    color: #053574;
+}
+
+.profile-header i {
+    font-size: 50px;
+    color: #053574;
+    margin-bottom: 10px;
+}
+
+.profile-header h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+    color: #053574;
+}
+
+/* Profile Info Styles */
+.profile-info {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.profile-info label {
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.profile-info p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #555;
+    line-height: 1.5;
+}
+.post-container label{
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+.comment label{
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* CSS cho phần trạng thái bài đăng */
+.post-status {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Trạng thái bài đăng đã duyệt */
+.post-status {
+    background-color: #28a745; /* Màu xanh lá cho 'Đã được duyệt' */
+    color: white;
+}
+
+/* Trạng thái bài đăng chưa duyệt */
+.post-status {
+    background-color: #ffc107; /* Màu vàng cho 'Chưa được duyệt' */
+    color: #212529;
+}
+
+/* CSS cho phần trạng thái bình luận */
+.comment-status {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* Trạng thái bình luận đã duyệt */
+.comment-status {
+    background-color: #007bff; /* Màu xanh dương cho 'Đã được duyệt' */
+    color: white;
+}
+
+/* Trạng thái bình luận chưa duyệt */
+.comment-status {
+    background-color: #dc3545; /* Màu đỏ cho 'Chưa được duyệt' */
+    color: white;
+}
+
+/* Nút chỉnh sửa thông tin cá nhân (hình cây bút chì) */
+.btn-edit-profile {
+    position: absolute;
+    top: 10px; /* Khoảng cách từ trên */
+    right: 10px; /* Khoảng cách từ phải */
+    background-color: transparent; /* Không có nền */
+    border: none; /* Không viền */
+    color: #007bff; /* Màu xanh dương */
+    font-size: 20px; /* Kích thước biểu tượng */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+.btn-edit-profile:hover {
+    color: #0056b3; /* Màu xanh dương đậm khi hover */
+}
+
+
+.profile-info {
+    position: relative;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+#editForm {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: none; /* Form được ẩn khi bắt đầu */
+    border: 1px solid #ccc; /* Border tương tự profile-info */
+}
+
+#editForm .form-group {
+    margin-bottom: 15px;
+}
+
+#editForm label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #333;
+}
+
+#editForm input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+#editForm input[type="text"]:focus {
+    border-color: #5cb85c;
+    outline: none;
+}
+
+#editForm button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#editForm button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+#editForm button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#editForm button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+#editForm button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+/* Thêm phần hover cho các button */
+#editForm button:hover {
+    opacity: 0.8;
+}

@@ -38,7 +38,7 @@ public class PostServiceImp implements PostService {
         this.commentReponsitory = commentReponsitory;
     }
 
-    @Value("${file.upload-dir:C:/default/upload/directory}")
+    @Value("${file.upload-dir:D:/backend/backend/src/main/resources/static/image}")
     private String uploadDir;
 
 

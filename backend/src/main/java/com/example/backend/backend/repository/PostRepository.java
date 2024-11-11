@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post,Integer>{
-    Post findByTitle(String title);
+    List<Post> findByUserId(int userId);
     List<Post> findByApprovedTrue();
     Post findById(int id);
     Post deleteById(int id);

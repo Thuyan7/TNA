@@ -35,14 +35,18 @@
                             <li><a th:href="@{/contact}">Liên Hệ</a></li>
                         </ul>
                     </div>
-                    <div class="inner-search">
-                        <input type="text" class="search-input" placeholder="Tìm kiếm...">
-                        <button class="search-btn">
-                            <i class="fa-solid fa-search"></i>
-                        </button>
-                    </div>
-                    <div class="inner-action">
-                        <h1>Chào mừng, <span th:text="${email}">Người dùng</span>!</h1>
+                    <div class="user-dropdown">
+                        <div class="dropdown-toggle">
+                            <i class="fa-solid fa-user"></i>
+                            <span th:text="${email}">Tên Người Dùng</span>
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </div>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="@{/user/profile}">Quản Lí Cá Nhân</a></li>
+                            <li><form th:action="@{/logout}" method="post">
+                                <button type="submit">Đăng Xuất</button>
+                            </form></li>
+                        </ul>
                     </div>
                     <div class="inner-menu-mb">
                         <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
@@ -78,7 +82,7 @@
                             <p class="line-clamp" style="--line-clamp:1;" th:text="${post.location.address}"></p>
                         </a>
                         <div class="inner-bot">
-                            <p class="inner-price" th:text="${post.price}"></p>
+                            <p><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</p>
                             <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Phòng</a>
                         </div>
                     </div>
