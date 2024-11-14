@@ -5,6 +5,7 @@ import com.example.backend.backend.entity.Comment;
 import com.example.backend.backend.entity.Post;
 import com.example.backend.backend.repository.CommentReponsitory;
 import com.example.backend.backend.repository.PostRepository;
+import com.example.backend.backend.repository.UserRepository;
 import com.example.backend.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -24,18 +25,22 @@ public class PublicController {
     private final UserService userService;
     private final PostRepository postRepository;
     private final CommentReponsitory commentReponsitory;
+    private final UserRepository userRepository;
 
     @Autowired
-    public PublicController(CommentReponsitory commentReponsitory, PostRepository postRepository, UserService userService) {
+    public PublicController(CommentReponsitory commentReponsitory, PostRepository postRepository, UserService userService, UserRepository userRepository) {
         this.commentReponsitory = commentReponsitory;
         this.postRepository = postRepository;
         this.userService = userService;
+        this.userRepository = userRepository;
     }
     @GetMapping("/introduce")
     public String introducePage(Model model, Principal principal) {
         if(principal != null) {
             String email = principal.getName();
+            String role = userRepository.findByEmail(email).getRole().getName();
             model.addAttribute("email", email);
+            model.addAttribute("role", role);
         }
         return "introduce";
     }
@@ -44,7 +49,9 @@ public class PublicController {
     public String contactPage(Model model, Principal principal) {
         if(principal != null) {
             String email = principal.getName();
+            String role = userRepository.findByEmail(email).getRole().getName();
             model.addAttribute("email", email);
+            model.addAttribute("role", role);
         }
         return "contact";
     }

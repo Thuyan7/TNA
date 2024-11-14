@@ -60,7 +60,9 @@ public class PostController {
     public String postPage(Model model, Principal principal) {
         if(principal != null){
             String email = principal.getName();
+            String role = userRepository.findByEmail(email).getRole().getName();
             model.addAttribute("email", email);
+            model.addAttribute("role", role);
         }
         List<Post> posts = postRepository.findByApprovedTrue();
         model.addAttribute("posts", posts);

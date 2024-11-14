@@ -23,13 +23,27 @@
             <div class="col-12">
                 <div class="inner-head">
                     <div class="inner-logo">
-                        <a th:href="@{/user/home}">
+                        <a th:if="${role != null and role == 'ADMIN'}" th:href="@{/admin/home}">
+                            <img th:src="@{/image/logo.png}" alt="logo">
+                        </a>
+                        <a th:if="${role != null and role != 'ADMIN'}" th:href="@{/user/home}">
+                            <img th:src="@{/image/logo.png}" alt="logo">
+                        </a>
+                        <a th:if="${role == null}" th:href="@{/home}">
                             <img th:src="@{/image/logo.png}" alt="logo">
                         </a>
                     </div>
+
                     <div class="inner-menu">
                         <ul class="menu">
-                            <li><a th:href="@{/user/home}" class="active-menu">Trang Chủ</a></li>
+                            <li>
+                                <a th:if="${role == 'ADMIN'}" th:href="@{/admin/home}" class="active-menu">
+                                    <i class="fa-solid fa-house"></i>Trang Chủ
+                                </a>
+                                <a th:unless="${role == 'ADMIN'}" th:href="@{/user/home}" class="active-menu">
+                                    <i class="fa-solid fa-house"></i>Trang Chủ
+                                </a>
+                            </li>
                             <li><a th:href="@{/introduce}">Giới Thiệu</a></li>
                             <li><a th:href="@{/post}">Bài Đăng</a></li>
                             <li><a th:href="@{/contact}">Liên Hệ</a></li>
@@ -38,7 +52,7 @@
                     <div class="user-dropdown">
                         <div class="dropdown-toggle">
                             <i class="fa-solid fa-user"></i>
-                            <span th:text="${email}">Tên Người Dùng</span>
+                            <span th:text="${email}"></span>
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <ul class="dropdown-menu">
@@ -51,10 +65,17 @@
                     <div class="inner-menu-mb">
                         <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
                         <ul class="menu-mb">
-                            <li><a th:href="@{/user/home}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
-                            <li><a th:href="@{/user/introduce}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
+                            <li>
+                                <a th:if="${role == 'ADMIN'}" th:href="@{/admin/home}" class="active-menu">
+                                    <i class="fa-solid fa-house"></i>Trang Chủ
+                                </a>
+                                <a th:unless="${role == 'ADMIN'}" th:href="@{/user/home}" class="active-menu">
+                                    <i class="fa-solid fa-house"></i>Trang Chủ
+                                </a>
+                            </li>
+                            <li><a th:href="@{/introduce}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
                             <li><a th:href="@{/post}"><i class="fa-solid fa-house"></i>Bài Đăng</a></li>
-                            <li><a th:href="@{/user/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
+                            <li><a th:href="@{/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>
                             <li class="item-action">
                                 <a th:href="@{/login}">Đăng Nhập</a>
                                 <a th:href="@{/logout}">Đăng Xuất</a>
@@ -73,7 +94,7 @@
             <div class="col-md-6 col-12" th:each="post : ${posts}">
                 <div class="inner-box">
                     <div class="inner-img" th:if="${post.listImages != null and !post.listImages.isEmpty()}">
-                        <img th:src="@{'/' + ${post.listImages[0].url}}" alt="Image Description" class="image" />
+                        <img th:src="@{'/image/' + ${post.listImages[0].url}}" alt="Image Description" class="image" />
                     </div>
                     <div class="inner-content">
                         <h3 class="title" th:text="${post.title}"></h3>
