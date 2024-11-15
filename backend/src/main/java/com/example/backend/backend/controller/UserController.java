@@ -5,13 +5,10 @@ import com.example.backend.backend.dto.UserDTO;
 import com.example.backend.backend.entity.Comment;
 import com.example.backend.backend.entity.Post;
 import com.example.backend.backend.entity.User;
-import com.example.backend.backend.repository.AmenityReponsitory;
 import com.example.backend.backend.repository.CommentReponsitory;
 import com.example.backend.backend.repository.PostRepository;
 import com.example.backend.backend.repository.UserRepository;
-import com.example.backend.backend.service.CommentService;
 import com.example.backend.backend.service.PostService;
-import com.example.backend.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -79,5 +76,16 @@ public class UserController {
         return "redirect:/user/profile";
     }
 
+    @DeleteMapping("/profile/deletePost/{id}")
+    public String deletePost(@PathVariable("id") int id ){
+        postService.deletePost(id);
+        return "redirect:/user/profile";
+    }
+
+    @DeleteMapping("/profile/deleteComment/{id}")
+    public String deleteComment(@PathVariable("id") int id){
+        commentReponsitory.deleteById(id);
+        return "redirect:/user/profile";
+    }
 }
 

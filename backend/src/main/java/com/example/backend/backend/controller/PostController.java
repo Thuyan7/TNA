@@ -73,9 +73,11 @@ public class PostController {
     public String postDetail(@PathVariable int id, Model model,Principal principal){
         if(principal != null){
             String email = principal.getName();
+            String role = userRepository.findByEmail(email).getRole().getName();
             Post post = postRepository.findById(id);
             List<Post> posts = postService.getRandomPost(3);
             List<Comment> comments = commentReponsitory.findByPostIdAndApprovedTrue(id);
+            model.addAttribute("role",role);
             model.addAttribute("post", post);
             model.addAttribute("posts", posts);
             model.addAttribute("comments", comments);

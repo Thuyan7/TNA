@@ -1,3 +1,30 @@
+.delete-button-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+.inner-box {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 16px;
+    margin: 16px 0;
+}
+.delete-button-wrapper button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff0000; /* Màu đỏ để nhấn mạnh biểu tượng xóa */
+    font-size: 18px;
+    padding: 4px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.delete-button-wrapper button:hover {
+    color: #cc0000;
+    transform: scale(1.1); /* Tăng nhẹ kích thước khi hover */
+}
 .header {
     position: sticky;
 }

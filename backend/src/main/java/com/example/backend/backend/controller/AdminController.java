@@ -2,6 +2,7 @@ package com.example.backend.backend.controller;
 
 import com.example.backend.backend.dto.CommentDTO;
 import com.example.backend.backend.dto.PostDTO;
+import com.example.backend.backend.dto.UserDTO;
 import com.example.backend.backend.entity.Comment;
 import com.example.backend.backend.entity.Post;
 import com.example.backend.backend.entity.User;
@@ -10,6 +11,7 @@ import com.example.backend.backend.repository.PostRepository;
 import com.example.backend.backend.repository.UserRepository;
 import com.example.backend.backend.service.CommentService;
 import com.example.backend.backend.service.PostService;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -125,6 +127,29 @@ public class AdminController {
     public String deletePost(@PathVariable int id) {
         postService.deletePost(id);
         return "redirect:/admin/post-management";
+    }
+
+    @GetMapping("/profile")
+    public String profilePage(Model model, Principal principal){
+        if (principal != null) {
+            String email = principal.getName();
+            User user = userRepository.findByEmail(email);
+            model.addAttribute("user", user);
+        }
+        return "admin-profile";
+    }
+
+    @PostMapping("/profile/updateProfile")
+    public String updateProfile(@ModelAttribute("user") UserDTO userDTO, Model model, Principal principal){
+        if (principal != null) {
+            String email = principal.getName();
+            User user = userRepository.findByEmail(email);
+            user.setFullName(userDTO.getFullName());
+            user.setPhone(userDTO.getPhone());
+            userRepository.save(user);
+            model.addAttribute("user", user);
+        }
+        return "redirect:/admin/profile";
     }
 
 }

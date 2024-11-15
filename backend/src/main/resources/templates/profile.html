@@ -114,16 +114,22 @@
                     </div>
                     <div class="inner-content">
                         <h3 class="title" th:text="${post.title}"></h3>
+                        <form th:action="@{/user/profile/deletePost/{id}(id=${post.id})}" method="post" id="deleteForm">
+                            <input type="hidden" name="_method" value="delete">
+                            <div class="delete-button-wrapper">
+                                <button type="submit" class="label--1" style="background: none; border: none; cursor: pointer;"
+                                        onclick="return confirm('Bạn có chắc chắn muốn xóa bài đăng này không?')">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </form>
                         <a th:if="${post.location.link}" th:href="${post.location.link}" target="_blank" class="btn inner-location">
                             <i class="fa-solid fa-map-location"></i>
                             <p class="line-clamp" style="--line-clamp:1;" th:text="${post.location.address}"></p>
                         </a>
                         <div class="inner-bot">
-                            <p class="inner-price" th:text="${post.price}"></p>
-                            <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Phòng</a>
-                            <form th:action="@{/user/profle/updatePost/{id}(id=${post.id})}" method="post" onsubmit="return confirm('Bạn chắc chắn muốn xóa bài đăng này?');">
-                                <button type="submit" class="btn btn-danger">Xóa Bài</button>
-                            </form>
+                            <p><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</p>
+                            <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Bài</a>
                         </div>
                         <div>
                             <p class="post-status" th:text="${post.approved ? 'Đã được duyệt' : 'Chưa được duyệt'}"></p>
@@ -143,8 +149,17 @@
                         </span>
                     <div class="comment-content">
                         <p th:text="${comment.content}"></p>
-                        <a th:href="@{/post/detail/{id}(id=${comment.post.id})}" class="btn">Xem Bình Luận</a>
                         <span th:text="${comment.approved ? 'Đã Được Duyệt' : 'Chưa Được Duyệt'}" class="comment-status"></span>
+                        <form th:action="@{/user/profile/deleteComment/{id}(id=${comment.id})}" method="post" id="deleteForm1">
+                            <input type="hidden" name="_method" value="delete">
+                            <div class="delete-button-wrapper">
+                                <button type="submit" class="label--1" style="background: none; border: none; cursor: pointer;"
+                                        onclick="return confirm('Bạn có chắc chắn muốn xóa bài đăng này không?')">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </form>
+                        <a th:href="@{/post/detail/{id}(id=${comment.post.id})}" class="btn">Xem Bình Luận</a>
                     </div>
                     </div>
                 </li>

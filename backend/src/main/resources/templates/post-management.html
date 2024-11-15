@@ -85,7 +85,9 @@
     </thead>
     <tbody>
     <tr th:each="post : ${posts}">
-      <td th:text="${post.title}"></td>
+      <td>
+        <a th:href="@{/post/detail/{id}(id=${post.id})}" th:text="${post.title}"></a>
+      </td>
       <td><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</td>
       <td class="break-word">
         <a th:href="${post.location.link}" th:text="${post.location.address}" target="_blank"></a>

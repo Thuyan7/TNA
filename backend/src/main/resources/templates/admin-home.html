@@ -212,7 +212,7 @@
                             </a>
                         </div>
                         <div class="inner-bot">
-                            <p class="inner-price" th:text="${post.price}"></p>
+                            <p><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</p>
                             <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Phòng</a>
                         </div>
                     </div>

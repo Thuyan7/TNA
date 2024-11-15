@@ -84,7 +84,9 @@
       <td th:text="${comment.content}"></td>
       <td th:text="${comment.rating}"></td>
       <td th:text="${#dates.format(comment.created, 'dd/MM/yyyy HH:mm')}"></td>
-      <td th:text="${comment.post.title}"></td>
+      <td>
+        <a th:href="@{/post/detail/{id}(id=${comment.post.id})}" th:text="${comment.post.title}"></a>
+      </td>
       <td>
         <a href="mailto:${comment.user.email}" th:text="${comment.user.email}"></a>
       </td>

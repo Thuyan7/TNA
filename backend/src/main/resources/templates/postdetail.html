@@ -29,13 +29,28 @@
       <div class="col-12">
         <div class="inner-head">
           <div class="inner-logo">
-            <a th:href="@{/user/home}">
+            <a th:if="${role != null and role == 'ADMIN'}" th:href="@{/admin/home}" class="active-menu">
+              <img th:src="@{/image/logo.png}" alt="logo">
+            </a>
+            <a th:if="${role != null and role != 'ADMIN'}" th:href="@{/user/home}" class="active-menu">
+              <img th:src="@{/image/logo.png}" alt="logo">
+            </a>
+            <a th:if="${role == null}" th:href="@{/home}" class="active-menu">
               <img th:src="@{/image/logo.png}" alt="logo">
             </a>
           </div>
           <div class="inner-menu">
             <ul class="menu">
-              <li><a th:href="@{/user/home}" class="active-menu">Trang Chủ</a></li>
+              <li><a th:if="${role != null and role == 'ADMIN'}" th:href="@{/admin/home}" class="active-menu">
+                <i class="fa-solid fa-house"></i>Trang Chủ
+              </a>
+                <a th:if="${role != null and role != 'ADMIN'}" th:href="@{/user/home}" class="active-menu">
+                  <i class="fa-solid fa-house"></i>Trang Chủ
+                </a>
+                <a th:if="${role == null}" th:href="@{/home}" class="active-menu">
+                  <i class="fa-solid fa-house"></i>Trang Chủ
+                </a>
+              </li>
               <li><a th:href="@{/introduce}">Giới Thiệu</a></li>
               <li><a th:href="@{/post}">Bài Đăng</a></li>
               <li><a th:href="@{/contact}">Liên Hệ</a></li>
@@ -57,7 +72,17 @@
           <div class="inner-menu-mb">
             <div class="menu-mb-icon"><i class="fa-solid fa-bars"></i></div>
             <ul class="menu-mb">
-              <li><a th:href="@{/user/home}" class="active-menu"><i class="fa-solid fa-house"></i>Trang Chủ</a></li>
+              <li>
+                <a th:if="${role != null and role == 'ADMIN'}" th:href="@{/admin/home}">
+                <i class="fa-solid fa-house"></i>Trang Chủ
+              </a>
+                <a th:if="${role != null and role != 'ADMIN'}" th:href="@{/user/home}">
+                  <i class="fa-solid fa-house"></i>Trang Chủ
+                </a>
+                <a th:if="${role == null}" th:href="@{/home}">
+                  <i class="fa-solid fa-house"></i>Trang Chủ
+                </a>
+              </li>
               <li><a th:href="@{/introduce}"><i class="fa-solid fa-house"></i>Giới Thiệu</a></li>
               <li><a th:href="@{/post}"><i class="fa-solid fa-house"></i>Bài Đăng</a></li>
               <li><a th:href="@{/contact}"><i class="fa-solid fa-house"></i>Liên Hệ</a></li>

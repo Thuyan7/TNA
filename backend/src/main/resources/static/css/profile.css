@@ -196,3 +196,45 @@
 #editForm button:hover {
     opacity: 0.8;
 }
+.comments-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comment-item {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.comment-rating {
+    margin-bottom: 8px;
+}
+
+.comment-content {
+    padding-top: 16px;
+}
+
+.delete-button-wrapper {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.delete-button-wrapper button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #ff0000; /* Màu đỏ nổi bật */
+    font-size: 16px;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.delete-button-wrapper button:hover {
+    color: #cc0000;
+    transform: scale(1.1); /* Tăng kích thước nhẹ khi hover */
+}
+
