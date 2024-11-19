@@ -41,7 +41,8 @@ public class PostController {
     public String showCreatePostPage(Model model , Principal principal){
         if(principal != null){
             String email = principal.getName();
-            model.addAttribute("email", email);
+            String name = userRepository.findByEmail(email).getFullName();
+            model.addAttribute("name", name);
             List<Amenity> amenities = amenityReponsitory.findAll();
             model.addAttribute("amenities", amenities);
         }

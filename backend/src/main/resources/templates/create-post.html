@@ -39,11 +39,11 @@
                         <div class="user-dropdown">
                             <div class="dropdown-toggle">
                                 <i class="fa-solid fa-user"></i>
-                                <span th:text="${email}"></span>
+                                <span th:text="${name}"></span>
                                 <i class="fa-solid fa-chevron-down"></i>
                             </div>
                             <ul class="dropdown-menu">
-                                <li><a th:href="@{/admin/profile}">Quản Lí Cá Nhân</a></li>
+                                <li><a th:href="@{/user/profile}">Quản Lí Cá Nhân</a></li>
                                 <li><form th:action="@{/logout}" method="post">
                                     <button type="submit">Đăng Xuất</button>
                                 </form></li>

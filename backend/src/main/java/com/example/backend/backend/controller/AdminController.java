@@ -44,9 +44,10 @@ public class AdminController {
     public String adminPage(Model model,Principal principal) {
         if (principal != null) {
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             List<Post> posts = postRepository.findByApprovedTrue();
             List<Comment> comments = commentReponsitory.findByApprovedTrue();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("comments", comments);
             model.addAttribute("posts", posts);
         }
@@ -57,8 +58,9 @@ public class AdminController {
     public String userManager(Model model,Principal principal) {
         if (principal != null) {
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             List<User> users = userRepository.findAll();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("users", users);
         }
         return "user-management";
@@ -75,8 +77,9 @@ public class AdminController {
     public String commentManagerPage(Model model, Principal principal) {
         if (principal != null) {
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             List<Comment> comments = commentReponsitory.findAll();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("comments", comments);
         }
         return "comment-management";
@@ -101,7 +104,8 @@ public class AdminController {
     public String postManagerPage(Model model,Principal principal) {
         if (principal != null) {
             String email = principal.getName();
-            model.addAttribute("email", email);
+            String name = userRepository.findByEmail(email).getFullName();
+            model.addAttribute("name", name);
             List<Post> posts = postRepository.findAll();
             Map<Integer, Double> averageRating = new HashMap<>();
             for(Post post : posts){

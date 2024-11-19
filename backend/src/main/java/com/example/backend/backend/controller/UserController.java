@@ -40,11 +40,12 @@ public class UserController {
     public String userPage(Model model , Principal principal) {
         if(principal != null){
         String email = principal.getName();
+        String name = userRepository.findByEmail(email).getFullName();
             List<Post> posts = postRepository.findByApprovedTrue();
             List<Comment> comments = commentReponsitory.findByApprovedTrue();
             model.addAttribute("comments", comments);
             model.addAttribute("posts", posts);
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
     }
         return "user-home";
     }

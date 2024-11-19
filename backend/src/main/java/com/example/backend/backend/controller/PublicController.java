@@ -38,8 +38,9 @@ public class PublicController {
     public String introducePage(Model model, Principal principal) {
         if(principal != null) {
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             String role = userRepository.findByEmail(email).getRole().getName();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("role", role);
         }
         return "introduce";
@@ -49,8 +50,9 @@ public class PublicController {
     public String contactPage(Model model, Principal principal) {
         if(principal != null) {
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             String role = userRepository.findByEmail(email).getRole().getName();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("role", role);
         }
         return "contact";
