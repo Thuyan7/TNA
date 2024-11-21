@@ -105,13 +105,13 @@ public class AdminController {
         if (principal != null) {
             String email = principal.getName();
             String name = userRepository.findByEmail(email).getFullName();
-            model.addAttribute("name", name);
             List<Post> posts = postRepository.findAll();
             Map<Integer, Double> averageRating = new HashMap<>();
             for(Post post : posts){
                 Double avgRating = commentReponsitory.findAverageRating(post.getId());
                 averageRating.put(post.getId(), avgRating != null ? avgRating : 0.0);
             }
+            model.addAttribute("name", name);
             model.addAttribute("posts", posts);
             model.addAttribute("averageRating", averageRating);
         }

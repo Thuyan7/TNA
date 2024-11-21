@@ -69,42 +69,42 @@
     </div>
 </header>
 <div class="container">
-<div class="profile-container">
-    <div class="profile-header">
-        <i class="fa-solid fa-user-circle" style="font-size: 50px;"></i>
-        <h2>Hồ Sơ Cá Nhân</h2>
-    </div>
-    <div class="profile-info">
-        <label for="email">Email:</label>
-        <p id="email" th:text="${user.email}"></p>
+    <div class="profile-container">
+        <div class="profile-header">
+            <i class="fa-solid fa-user-circle" style="font-size: 50px;"></i>
+            <h2>Hồ Sơ Cá Nhân</h2>
+        </div>
+        <div class="profile-info">
+            <label for="email">Email:</label>
+            <p id="email" th:text="${user.email}"></p>
 
-        <label for="fullName">Họ Tên:</label>
-        <p id="fullName" th:text="${user.fullName}"></p>
+            <label for="fullName">Họ Tên:</label>
+            <p id="fullName" th:text="${user.fullName}"></p>
 
-        <label for="phone">Số Điện Thoại:</label>
-        <p id="phone" th:text="${user.phone}"></p>
+            <label for="phone">Số Điện Thoại:</label>
+            <p id="phone" th:text="${user.phone}"></p>
 
-        <a href="javascript:void(0);" class="btn-edit-profile" onclick="editProfile()">
-            <i class="fa-solid fa-pen"></i>
-        </a>
+            <a href="javascript:void(0);" class="btn-edit-profile" onclick="editProfile()">
+                <i class="fa-solid fa-pen"></i>
+            </a>
+        </div>
+        <div id="editForm" style="display: none;">
+            <form th:action="@{/admin/profile/updateProfile}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label for="fullNameEdit">Họ Tên:</label>
+                    <input type="text" id="fullNameEdit" th:field="*{fullName}" value="${user.fullName}" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneEdit">Số Điện Thoại:</label>
+                    <input type="text" id="phoneEdit" th:field="*{phone}" value="${user.phone}" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Hủy</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div id="editForm" style="display: none;">
-        <form th:action="@{/admin/profile/updateProfile}" method="post" th:object="${user}">
-            <div class="form-group">
-                <label for="fullNameEdit">Họ Tên:</label>
-                <input type="text" id="fullNameEdit" th:field="*{fullName}" value="${user.fullName}" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="phoneEdit">Số Điện Thoại:</label>
-                <input type="text" id="phoneEdit" th:field="*{phone}" value="${user.phone}" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
-                <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Hủy</button>
-            </div>
-        </form>
-    </div>
-</div>
 </div>
 <script>
     function editProfile() {

@@ -61,8 +61,9 @@ public class PostController {
     public String postPage(Model model, Principal principal) {
         if(principal != null){
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             String role = userRepository.findByEmail(email).getRole().getName();
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
             model.addAttribute("role", role);
         }
         List<Post> posts = postRepository.findByApprovedTrue();
@@ -74,6 +75,7 @@ public class PostController {
     public String postDetail(@PathVariable int id, Model model,Principal principal){
         if(principal != null){
             String email = principal.getName();
+            String name = userRepository.findByEmail(email).getFullName();
             String role = userRepository.findByEmail(email).getRole().getName();
             Post post = postRepository.findById(id);
             List<Post> posts = postService.getRandomPost(3);
@@ -82,7 +84,7 @@ public class PostController {
             model.addAttribute("post", post);
             model.addAttribute("posts", posts);
             model.addAttribute("comments", comments);
-            model.addAttribute("email", email);
+            model.addAttribute("name", name);
         }
         return "postdetail";
     }
