@@ -90,15 +90,15 @@
     </div>
     <div id="editForm" style="display: none;">
         <form th:action="@{/user/profile/updateProfile}" method="post" th:object="${user}">
-            <div class="form-group">
+            <div class="form-group1">
                 <label for="fullNameEdit">Họ Tên:</label>
-                <input type="text" id="fullNameEdit" th:field="*{fullName}" value="${user.fullName}" class="form-control" required>
+                <input type="text" id="fullNameEdit" th:field="*{fullName}" class="form-control" required>
             </div>
-            <div class="form-group">
+            <div class="form-group1">
                 <label for="phoneEdit">Số Điện Thoại:</label>
-                <input type="text" id="phoneEdit" th:field="*{phone}" value="${user.phone}" class="form-control" required>
+                <input type="text" id="phoneEdit" th:field="*{phone}" class="form-control" required>
             </div>
-            <div class="form-group">
+            <div class="form-group1">
                 <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
                 <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Hủy</button>
             </div>
@@ -123,6 +123,11 @@
                                 </button>
                             </div>
                         </form>
+                        <div class="edit-button-wrapper">
+                            <a th:href="@{/user/profile/updatePost/{id}(id=${post.id})}">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                        </div>
                         <a th:if="${post.location.link}" th:href="${post.location.link}" target="_blank" class="btn inner-location">
                             <i class="fa-solid fa-map-location"></i>
                             <p class="line-clamp" style="--line-clamp:1;" th:text="${post.location.address}"></p>
@@ -137,8 +142,9 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
-    </div>
+</div>
     <div class="comment">
         <label>Danh Sách Bình Luận Của Bạn</label>
             <ul class="comments-list" th:each="comment : ${comments}">
@@ -166,10 +172,8 @@
             </ul>
     </div>
 </div>
-</div>
 <script>
     function editProfile() {
-        console.log("Chỉnh sửa profile");
         document.querySelector('.profile-info').style.display = 'none';
         document.getElementById('editForm').style.display = 'block';
     }
@@ -177,6 +181,7 @@
         document.querySelector('.profile-info').style.display = 'block';
         document.getElementById('editForm').style.display = 'none';
     }
+
 </script>
 </body>
 </html>

@@ -198,7 +198,7 @@
                 <div class="card col-xl-4 col-lg-6 col-12" th:each="post: ${posts}">
                     <div class="inner-box">
                         <div class="inner-img" th:if="${post.listImages != null and !post.listImages.isEmpty()}">
-                            <img th:src="@{'/' + ${post.listImages[0].url}}" alt="Image Description" class="image">
+                            <img th:src="@{'/image/' + ${post.listImages[0].url}}" alt="Image Description" class="image">
                         </div>
                         <p class="inner-title text-center" th:text="${post.title}"></p>
                         <div class="inner-location">
@@ -210,7 +210,7 @@
                         </div>
                         <div class="inner-bot">
                             <p><span th:text="${#numbers.formatDecimal(post.price, 0, 'COMMA', 0, 'POINT')}"></span>VND</p>
-                            <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Phòng</a>
+                            <a th:href="@{/post/detail/{id}(id=${post.id})}" class="btn">Xem Bài</a>
                         </div>
                     </div>
                 </div>

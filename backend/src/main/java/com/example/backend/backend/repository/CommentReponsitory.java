@@ -12,7 +12,8 @@ public interface CommentReponsitory extends JpaRepository<Comment, Integer> {
     List<Comment> findByApprovedTrue();
     List<Comment> deleteByPostId(int postId);
     List<Comment> findByUserId(int userId);
-
     @Query("SELECT AVG(c.rating) FROM Comment c WHERE c.post.id = :postId AND c.approved = true")
     Double findAverageRating(@Param("postId") int postId);
+    long countByApprovedTrue();
+    long countByApprovedFalse();
 }

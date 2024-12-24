@@ -20,8 +20,8 @@ img {
 .btn-register {
     color: var(--color2);
     font-weight: 900;
-    text-align: center;
     width: 100%;
+    text-align: center;
 }
 
 .inner-form .form {
@@ -92,7 +92,7 @@ img {
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+
 }
 
 @media (max-width: 768px) {

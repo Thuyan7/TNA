@@ -29,19 +29,13 @@
                 <div class="inner-form">
                     <form th:action="@{/login}" method="post" class="form">
                         <div th:if="${errorMessage}" class="error-message">
-                            <p th:text="${errorMessage}">Invalid username or password!</p>
+                            <p th:text="${errorMessage}"></p>
                         </div>
 
                         <label for="email">Tên đăng nhập</label>
                         <input type="text" name="email" id="email" class="form-control" required>
                         <label for="password">Mật khẩu</label>
                         <input type="password" name="password" id="password" class="form-control" required>
-                        <div class="auth-options">
-                            <div class="remember">
-                                <input type="checkbox" name="remember" id="">
-                                <span>Nhớ mật khẩu</span>
-                            </div>
-                        </div>
                         <button type="submit">Đăng Nhập</button>
                         <div class="inner-line"></div>
                         <div class="register">

@@ -14,6 +14,7 @@ public class CommentServiceImp implements CommentService {
 
     private final CommentReponsitory commentReponsitory;
 
+    @Autowired
     public CommentServiceImp(CommentReponsitory commentReponsitory) {
         this.commentReponsitory = commentReponsitory;
     }

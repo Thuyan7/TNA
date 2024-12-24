@@ -21,14 +21,14 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-public class PublicController {
+public class AuthController {
     private final UserService userService;
     private final PostRepository postRepository;
     private final CommentReponsitory commentReponsitory;
     private final UserRepository userRepository;
 
     @Autowired
-    public PublicController(CommentReponsitory commentReponsitory, PostRepository postRepository, UserService userService, UserRepository userRepository) {
+    public AuthController(CommentReponsitory commentReponsitory, PostRepository postRepository, UserService userService, UserRepository userRepository) {
         this.commentReponsitory = commentReponsitory;
         this.postRepository = postRepository;
         this.userService = userService;
@@ -79,21 +79,32 @@ public class PublicController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute UserDTO userDTO, Model model){
+
+        if(userDTO.getFullName() == null|| userDTO.getEmail()== null||userDTO.getPhone()== null||userDTO.getPassword()== null||userDTO.getConfirmPassword()== null){
+            model.addAttribute("error0","Vui lòng nhập đầy đủ thông tin ");
+        }
+
+        if(userRepository.existsByEmail(userDTO.getEmail())){
+            model.addAttribute("error1", "Email đã tồn tại");
+            return "register";
+        }
         String emailRegex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         if (!userDTO.getEmail().matches(emailRegex)) {
-            model.addAttribute("error1", "Email không hợp lệ!");
+            model.addAttribute("error2", "Email không hợp lệ!");
             return "register";
         }
 
-        String phoneRegex = "^0[1-9][0-9]{8,9}$";
+        String phoneRegex = "^0(3|5|7|8|9)[0-9]{8}$";
         if (!userDTO.getPhone().matches(phoneRegex)) {
-            model.addAttribute("error2", "Số điện thoại không hợp lệ!");
+            model.addAttribute("error3", "Số điện thoại không hợp lệ!");
             return "register";
         }
         if(!userDTO.getPassword().equals(userDTO.getConfirmPassword())) {
-            model.addAttribute("error3", "Mật khẩu không khớp.Vui lòng nhập lại!");
+            model.addAttribute("error4", "Mật khẩu không khớp.Vui lòng nhập lại!");
             return "register";
         }
+
+
         userService.registerUser(userDTO);
         return "redirect:/login";
     }

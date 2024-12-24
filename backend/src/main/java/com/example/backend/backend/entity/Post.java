@@ -41,7 +41,7 @@ public class Post {
     @OneToMany (mappedBy = "post",cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<Comment> listComment;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "post", cascade = CascadeType.PERSIST, orphanRemoval = false)
     private Set<Image> listImages = new HashSet<>();
 
 
@@ -150,7 +150,10 @@ public class Post {
     }
 
     public void setListImages(Set<Image> listImages) {
-        this.listImages = listImages;
+        if (listImages != null) {
+            this.listImages.clear();
+            this.listImages.addAll(listImages);
+        }
     }
 
     public Set<Amenity> getListAmenities() {

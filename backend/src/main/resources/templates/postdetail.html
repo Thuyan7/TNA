@@ -130,6 +130,7 @@
             <div class="inner-overview">
               <h2 class="inner-title">Tổng quan</h2>
               <p class="inner-para" th:text="${post.description}"></p>
+              <h2 class="inner-phone">Số điện thoại: <a href="tel:${post.user.phone}" th:text="${post.user.phone}" style="color: black"></a></h2>
             </div>
             <div class="inner-utilities">
               <h2 class="inner-title">Tiện ích</h2>

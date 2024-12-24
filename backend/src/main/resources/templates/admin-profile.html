@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Hồ Sơ Cá Nhân</title>
@@ -16,6 +16,8 @@
     <link rel="stylesheet" th:href="@{/css/post.css}">
     <link rel="stylesheet" th:href="@{/css/postdetail.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <script th:src="@{https://cdn.jsdelivr.net/npm/chart.js}"></script>
+    <script th:src="@{https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels}"></script>
 </head>
 <body>
 <header class="header">
@@ -43,7 +45,7 @@
                             <i class="fa-solid fa-chevron-down"></i>
                         </div>
                         <ul class="dropdown-menu">
-                            <li><a th:href="@{/user/profile}">Quản Lí Cá Nhân</a></li>
+                            <li><a th:href="@{/admin/profile}">Quản Lí Cá Nhân</a></li>
                             <li><form th:action="@{/logout}" method="post">
                                 <button type="submit">Đăng Xuất</button>
                             </form></li>
@@ -90,23 +92,143 @@
         </div>
         <div id="editForm" style="display: none;">
             <form th:action="@{/admin/profile/updateProfile}" method="post" th:object="${user}">
-                <div class="form-group">
+                <div class="form-group1">
                     <label for="fullNameEdit">Họ Tên:</label>
                     <input type="text" id="fullNameEdit" th:field="*{fullName}" value="${user.fullName}" class="form-control" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group11">
                     <label for="phoneEdit">Số Điện Thoại:</label>
                     <input type="text" id="phoneEdit" th:field="*{phone}" value="${user.phone}" class="form-control" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group1">
                     <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
                     <button type="button" class="btn btn-secondary" onclick="cancelEdit()">Hủy</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <div class="chart-container">
+        <div class="chart-wrapper">
+            <div class="post-statistics">
+                <h3 style="color: black">Thống Kê Bài Đăng</h3>
+                <ul>
+                    <li>Tổng số bài đăng: <span th:text="${totalPost}"></span></li>
+                    <li>Số bài đã duyệt: <span th:text="${totalPostApprovedTrue}"></span></li>
+                    <li>Số bài chưa duyệt: <span th:text="${totalPostApprovedFalse}"></span></li>
+                </ul>
+                <canvas id="postChart" width="20" height="20"></canvas>
+            </div>
+            <div class="comment-statistics">
+                <h3 style="color: black">Thống Kê Bình Luận </h3>
+                <ul>
+                    <li>Tổng số bài đăng: <span th:text="${totalComment}"></span></li>
+                    <li>Số bài đã duyệt: <span th:text="${totalCommentApprovedTrue}"></span></li>
+                    <li>Số bài chưa duyệt: <span th:text="${totalCommentApprovedFalse}"></span></li>
+                </ul>
+                <canvas id="commentChart" width="20" height="20"></canvas>
+            </div>
+            <!-- User Statistics Section -->
+            <div class="user-statistics">
+                <h3 style="color: black">Thống Kê Người Dùng</h3>
+                <ul>
+                    <li>Tổng số người dùng: <span th:text="${totalUser}"></span></li>
+                </ul>
+                <canvas id="userChart" width="100" height="100"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Post Chart
+        const postCtx = document.getElementById('postChart').getContext('2d');
+        const totalPostApprovedTrue = [[${totalPostApprovedTrue}]] || 0;
+        const totalPostApprovedFalse = [[${totalPostApprovedFalse}]] || 0;
+
+        new Chart(postCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Đã Duyệt', 'Chưa Duyệt'],
+                datasets: [{
+                    data: [totalPostApprovedTrue, totalPostApprovedFalse],
+                    backgroundColor: ['#4CAF50', '#FF5722'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        // Comment Chart
+        const commentCtx = document.getElementById('commentChart').getContext('2d');
+        const totalCommentApprovedTrue = [[${totalCommentApprovedTrue}]] || 0;
+        const totalCommentApprovedFalse = [[${totalCommentApprovedFalse}]] || 0;
+
+        new Chart(commentCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Đã Duyệt', 'Chưa Duyệt'],
+                datasets: [{
+                    data: [totalCommentApprovedTrue, totalCommentApprovedFalse],
+                    backgroundColor: ['#4CAF50', '#FF5722'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        // Lấy ngữ cảnh canvas
+        const userCtx = document.getElementById('userChart').getContext('2d');
+        const totalUsers = [[${totalUser}]];
+
+        new Chart(userCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Người Dùng'],
+                datasets: [{
+                    data: [totalUsers],
+                    backgroundColor: ['#053574'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    datalabels: {
+                        display: true,
+                        color: '#ffffff',
+                        font: {
+                            weight: 'bold',
+                            size: 16
+                        },
+                        formatter: function(value) {
+                            return `${value} Người Dùng`;
+                        }
+                    },
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        enabled: false 
+                    }
+
+                }
+            },
+            plugins: [ChartDataLabels]
+        });
+    });
     function editProfile() {
         console.log("Chỉnh sửa profile");
         document.querySelector('.profile-info').style.display = 'none';

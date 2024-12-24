@@ -138,7 +138,21 @@ public class AdminController {
         if (principal != null) {
             String email = principal.getName();
             User user = userRepository.findByEmail(email);
+            long totalPost = postRepository.count();
+            long totalPostApprovedTrue = postRepository.countByApprovedTrue();
+            long totalPostApprovedFalse = postRepository.countByApprovedFalse();
+            long totalUser = userRepository.count();
+            long totalComment = commentReponsitory.count();
+            long totalCommentApprovedTrue = commentReponsitory.countByApprovedTrue();
+            long totalCommentApprovedFalse = commentReponsitory.countByApprovedFalse();
             model.addAttribute("user", user);
+            model.addAttribute("totalPost", totalPost);
+            model.addAttribute("totalPostApprovedTrue", totalPostApprovedTrue);
+            model.addAttribute("totalPostApprovedFalse", totalPostApprovedFalse);
+            model.addAttribute("totalUser", totalUser);
+            model.addAttribute("totalComment", totalComment);
+            model.addAttribute("totalCommentApprovedTrue", totalCommentApprovedTrue);
+            model.addAttribute("totalCommentApprovedFalse", totalCommentApprovedFalse);
         }
         return "admin-profile";
     }

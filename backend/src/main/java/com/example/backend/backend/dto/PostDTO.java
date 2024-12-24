@@ -1,19 +1,24 @@
 package com.example.backend.backend.dto;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public class PostDTO {
     private int id;
     private String title;
+
+    @NotNull(message = "Giá không được để trống")
+    @DecimalMin(value = "0.01", message = "Giá phải lớn hơn 0")
     private double price;
     private String description;
 
-    // Chia nhỏ phần địa chỉ thành các trường riêng biệt
-    private String streetAddress;  // Số nhà & Tên đường
-    private String ward;           // Xã/Phường
-    private String district;       // Huyện/Quận
-    private String city;           // Tỉnh/Thành phố
+
+    private String streetAddress;
+    private String ward;
+    private String district;
+    private String city;
 
     private String link;
     private List<Integer> amenities;
@@ -125,5 +130,24 @@ public class PostDTO {
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    public String getFullAddress() {
+        StringBuilder fullAddress = new StringBuilder();
+
+        if (streetAddress != null && !streetAddress.isEmpty()) {
+            fullAddress.append(streetAddress);
+        }
+        if (ward != null && !ward.isEmpty()) {
+            fullAddress.append(", ").append(ward);
+        }
+        if (district != null && !district.isEmpty()) {
+            fullAddress.append(", ").append(district);
+        }
+        if (city != null && !city.isEmpty()) {
+            fullAddress.append(", ").append(city);
+        }
+
+        return fullAddress.toString();
     }
 }

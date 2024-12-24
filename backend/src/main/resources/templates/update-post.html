@@ -40,7 +40,7 @@
                         <div class="user-dropdown">
                             <div class="dropdown-toggle">
                                 <i class="fa-solid fa-user"></i>
-                                <span th:text="${name}"></span>
+                                <span th:text="${user.fullName}"></span>
                                 <i class="fa-solid fa-chevron-down"></i>
                             </div>
                             <ul class="dropdown-menu">
@@ -72,12 +72,14 @@
 
 <div class="container mt-5">
     <div class="post">
-        <form th:action="@{/post/create_post}" method="post" enctype="multipart/form-data"  th:object="${postDTO}">
+        <form th:action="@{/user/profile/updatePost}" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6">
+                    <input type="hidden" id="id" name="id" th:value="${post.id}" required>
                     <div class="image-1 mb-3">
                         <div class="img-wrap" id="imgWrap">
-
+                            <img th:if="${post.listImages != null}" th:each="image : ${post.listImages}"
+                                 th:src="@{'/' + ${image.url}}" alt="Post Image" class="uploaded-image" style="width: 150px; height: 150px"/>
                         </div>
                         <div class="image-upload">
                             <label class="label-1" for="images">
@@ -88,49 +90,39 @@
                     </div>
                 </div>
                 <div class="col-md-6">
+
                     <div class="post-content mb-3">
                         <label class="label-1" for="title">Tiêu đề đăng bài:</label>
                         <input type="text" id="title" name="title" class="form-control" placeholder="Tiêu đề"
-                               required>
+                               th:value="${post.title}" required>
                     </div>
-
                     <div class="price mb-3">
                         <label class="label-1" for="price">Giá:</label>
-                        <input type="number" id="price" name="price" class="form-control" placeholder="Giá" required min="0" >
+                        <input type= "number" id="price" name="price" class="form-control" placeholder="Giá"
+                               th:value="${post.price}" required>
                     </div>
-
                     <div class="description mb-3">
                         <label class="label-1" for="description">Miêu tả:</label>
                         <textarea id="description" name="description" class="form-control" placeholder="Miêu tả"
-                                  rows="3" required></textarea>
+                                  rows="3" th:text="${post.description}" required></textarea>
                     </div>
                     <div class="address mb-3">
                         <label class="label-1" for="streetAddress">Số nhà & Tên đường:</label>
-                        <input type="text" id="streetAddress" name="streetAddress" class="form-control" placeholder="Số nhà & Tên đường" required>
-                    </div>
-                    <div class="address mb-3">
-                        <label class="label-1" for="ward">Xã/Phường:</label>
-                        <input type="text" id="ward" name="ward" class="form-control" placeholder="Xã/Phường" required>
-                    </div>
-                    <div class="address mb-3">
-                        <label class="label-1" for="district">Huyện/Quận:</label>
-                        <input type="text" id="district" name="district" class="form-control" placeholder="Huyện/Quận" required>
-                    </div>
-                    <div class="address mb-3">
-                        <label class="label-1" for="city">Tỉnh/Thành phố:</label>
-                        <input type="text" id="city" name="city" class="form-control" placeholder="Tỉnh/Thành phố" required>
+                        <input type="text" id="streetAddress" name="streetAddress" class="form-control"
+                               placeholder="Số nhà & Tên đường" th:value="${post.location.address}" required>
                     </div>
                     <div class="amenities mb-3">
                         <label class="label-1">Tiện ích:</label>
                         <ul>
                             <li th:each="amenity : ${amenities}">
-                                <input type="checkbox" name="amenities" th:value="${amenity.id}" />
+                                <input type="checkbox" name="amenities" th:value="${amenity.id}"
+                                       th:checked="${#lists.contains(post.listAmenities, amenity)}"/>
                                 <span style="color: black" th:text="${amenity.name}"></span>
                             </li>
                         </ul>
                     </div>
                     <div class="submit-button">
-                        <button type="submit" class="btn btn-primary">Đăng bài</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật bài</button>
                     </div>
                 </div>
             </div>

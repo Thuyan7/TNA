@@ -51,6 +51,17 @@
     margin: 16px 0; /* Khoảng cách trên và dưới cho nút địa chỉ */
 }
 
+.btn-edit-post {
+    display: flex; /* Sử dụng flexbox để căn chỉnh địa chỉ */
+    align-items: center; /* Căn giữa các phần tử */
+    color: white; /* Màu chữ của nút */
+    color: black;
+    padding: 10px 15px; /* Padding cho nút */
+    border-radius: 5px; /* Bo góc cho nút */
+    text-decoration: none; /* Bỏ gạch chân */
+    margin: 16px 0; /* Khoảng cách trên và dưới cho nút địa chỉ */
+}
+
 .inner-bot {
     display: flex; /* Sử dụng flexbox để sắp xếp các phần tử */
     align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
@@ -71,5 +82,88 @@
 @media (max-width: 768px) {
     .inner-box {
         flex: 1 1 100%; /* Mỗi bài đăng chiếm toàn bộ chiều rộng trên thiết bị nhỏ hơn */
+    }
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    margin: 40px auto 0;
+
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #1d2124;
+}
+
+
+
+.form-control {
+    height: 38px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+button[type="submit"] {
+    height: 38px;
+    align-self: flex-start; /* Đảm bảo nút nằm cùng dòng với các trường */
+    margin-left: 10px;
+}
+
+/* Tiêu đề chính với hiệu ứng đẹp và căn giữa */
+#main-title {
+    font-size: 32px; /* Kích thước chữ */
+    font-weight: bold; /* Chữ đậm */
+    text-align: center; /* Căn giữa tiêu đề */
+    color: #1b1e21; /* Màu sắc chữ */
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 3px; /* Khoảng cách giữa các chữ */
+    margin: 0 auto; /* Căn giữa ngang */
+    position: relative; /* Để áp dụng hiệu ứng */
+    animation: slideIn 1s ease-out; /* Hiệu ứng slide vào */
+    display: block; /* Chuyển đổi thành block để căn giữa */
+}
+
+/* Hiệu ứng khi tiêu đề xuất hiện */
+@keyframes slideIn {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Hiệu ứng hover */
+#main-title:hover {
+    color: #0a5daf; /* Màu chữ khi hover */
+    text-shadow: 2px 2px 8px rgba(30, 144, 255, 0.6); /* Bóng đổ khi hover */
+    transform: scale(1.1); /* Phóng to một chút khi hover */
+    transition: all 0.3s ease; /* Hiệu ứng mượt mà khi hover */
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group {
+        width: 100%;
     }
 }
