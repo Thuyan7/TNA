@@ -46,8 +46,11 @@ TNA/
 ### 2. Cấu hình CSDL
 
 Sửa file application.properties (hoặc application.yml) để trỏ đúng đến CSDL của bạn:
+
 spring.datasource.url=jdbc:mysql://localhost:3306/tna
+
 spring.datasource.username=root
+
 spring.datasource.password=1234
 
 ### 3. Chạy ứng dụng
